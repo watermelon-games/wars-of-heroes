@@ -1,0 +1,11 @@
+# IntelliJ IDEA
+.idea
+.idea/
+.idea/*
+.idea/php.xml
+
+# ENVIRONMENT
+.env
+
+# NODE MODULES
+src/node_modules
