@@ -15,6 +15,8 @@ class RegisterController extends Controller
             'email' => $request->get('email'),
             'name' => $request->get('name'),
             'password' => bcrypt($request->get('password')),
+            'country' => geoip()->getLocation()->country,
+            'city' => geoip()->getLocation()->city
         ]);
 
         $token = auth()->attempt($request->only(['email', 'password']));
