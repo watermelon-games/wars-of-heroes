@@ -29,4 +29,12 @@ Route::prefix('v1')->group(function () {
             });
         });
     });
+
+    Route::prefix('characters')->group(function () {
+        Route::namespace('Api')->group(function () {
+            Route::middleware(['auth:api'])->group(function () {
+                Route::post('create', 'CharactersController@create')->name('characters.create');
+            });
+        });
+    });
 });
