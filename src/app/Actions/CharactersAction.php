@@ -25,10 +25,21 @@ class CharactersAction
 
     public function create(array $data): Characters
     {
+        $check = $this->findByUser();
+
+        if ($check) {
+            return $check;
+        }
+
         $character = $this->charactersRepository->create($data);
 
         $this->charactersStatsRepository->create($character->id);
 
+        return $this->findByUser();
+    }
+
+    public function findByUser(): ?Characters
+    {
         return $this->charactersRepository->findByUser();
     }
 }
