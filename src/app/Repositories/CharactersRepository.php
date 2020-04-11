@@ -22,6 +22,7 @@ class CharactersRepository
         $model->nickname = $request['nickname'];
         $model->gender = $request['gender'];
         $model->money = 0;
+        $model->level = 1;
         $model->experience = 0;
         $model->next_level = 100;
         $model->wins = 0;

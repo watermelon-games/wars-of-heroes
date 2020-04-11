@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $character
  *
  * @property float $money
+ * @property integer $level
  * @property integer $experience
  * @property integer $next_level
  * @property integer $wins
@@ -43,6 +44,7 @@ class Characters extends Model
         'avatar',
         'character',
         'money',
+        'level',
         'experience',
         'next_level',
         'wins',
