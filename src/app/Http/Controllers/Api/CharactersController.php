@@ -17,7 +17,7 @@ class CharactersController extends Controller
 
     public function create(Request $request)
     {
-        $character = $this->action->create($request->all());
+        $character = $this->action->create($request->all(), auth()->id());
 
         return $this->returnResponse([
             'character' => $character,

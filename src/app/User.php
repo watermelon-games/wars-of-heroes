@@ -2,11 +2,22 @@
 
 namespace App;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
+/**
+ * @property int $id
+ *
+ * @property string $name
+ * @property string $email
+ * @property string $password
+ * @property string $country
+ * @property string $city
+ *
+ * @property string $created_at
+ * @property string $updated_at
+ */
 class User extends Authenticatable implements JWTSubject
 {
     use Notifiable;

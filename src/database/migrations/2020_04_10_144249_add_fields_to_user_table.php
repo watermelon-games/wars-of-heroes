@@ -1,4 +1,4 @@
-<?php
+<?php$table->string('city')->after('column')->nullable();
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;

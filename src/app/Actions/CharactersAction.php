@@ -23,9 +23,9 @@ class CharactersAction
         $this->charactersStatsRepository = $charactersStatsRepository;
     }
 
-    public function create(array $data): Characters
+    public function create(array $data, int $userId): Characters
     {
-        $check = $this->findByUser();
+        $check = $this->findByUser($userId);
 
         if ($check) {
             return $check;
@@ -35,11 +35,11 @@ class CharactersAction
 
         $this->charactersStatsRepository->create($character->id);
 
-        return $this->findByUser();
+        return $this->findByUser($userId);
     }
 
-    public function findByUser(): ?Characters
+    public function findByUser(int $userId): ?Characters
     {
-        return $this->charactersRepository->findByUser();
+        return $this->charactersRepository->findByUser($userId);
     }
 }

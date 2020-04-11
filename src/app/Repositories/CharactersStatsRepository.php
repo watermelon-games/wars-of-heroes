@@ -6,10 +6,11 @@ use App\Models\CharactersStats;
 
 class CharactersStatsRepository
 {
-    protected $model = CharactersStats::class;
+    private $model = CharactersStats::class;
 
     public function create(int $id): void
     {
+        /** @var $model CharactersStats */
         $model = new $this->model();
 
         $model->character_id = $id;

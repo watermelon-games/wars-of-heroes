@@ -6,11 +6,12 @@ use App\Models\Characters;
 
 class CharactersRepository
 {
-    protected $model = Characters::class;
+    /** @var $model Characters */
+    private $model = Characters::class;
 
-    public function findByUser(): ?Characters
+    public function findByUser(int $userId): ?Characters
     {
-        return $this->model::where('user_id', auth()->id())->with('stats')->first();
+        return $this->model::where('user_id', $userId)->with('stats')->first();
     }
 
     public function create(array $request): Characters
