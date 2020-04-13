@@ -15719,109 +15719,76 @@ body {
   background-color: #e9ecef;
 }
 
-.editor {
-  width: 100%;
-  min-height: 18rem;
-  box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.3);
-  border-top: 6px solid #4a4a4a;
-  border-radius: 3px;
+body {
+  font-family: "Lato", sans-serif;
 }
 
-.editor .toolbar {
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+.main-head {
+  height: 150px;
+  background: #FFF;
 }
 
-.editor .toolbar .line {
-  display: flex;
-  border-bottom: 1px solid #e2e2e2;
+.sidenav {
+  height: 100%;
+  background-color: #000;
+  overflow-x: hidden;
+  padding-top: 20px;
 }
 
-.editor .toolbar .line:last-child {
-  border-bottom: none;
+.main {
+  padding: 0px 10px;
 }
 
-.editor .toolbar .line .box {
-  display: flex;
-  border-left: 1px solid #e2e2e2;
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
 }
 
-.editor .toolbar .line .box .btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  transition: 0.2s ease all;
+@media screen and (max-width: 450px) {
+  .login-form {
+    margin-top: 10%;
+  }
+
+  .register-form {
+    margin-top: 10%;
+  }
 }
 
-.editor .toolbar .line .box .btn:hover,
-.editor .toolbar .line .box .btn.active {
-  background-color: #e1e1e1;
-  cursor: pointer;
+@media screen and (min-width: 768px) {
+  .main {
+    margin-left: 40%;
+  }
+
+  .sidenav {
+    width: 40%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+  }
+
+  .login-form {
+    margin-top: 80%;
+  }
+
+  .register-form {
+    margin-top: 20%;
+  }
 }
 
-.editor .toolbar .line .box .btn.icon img {
-  width: 15px;
-  padding: 10px;
+.login-main-text {
+  margin-top: 20%;
+  padding: 60px;
+  color: #fff;
 }
 
-.editor .toolbar .line .box .btn.icon.smaller img {
-  width: 12px;
+.login-main-text h2 {
+  font-weight: 300;
 }
 
-.editor .toolbar .line .box .btn.has-submenu {
-  width: 20px;
-  padding: 0 10px;
-}
-
-.editor .toolbar .line .box .btn.has-submenu::after {
-  content: "";
-  width: 6px;
-  height: 6px;
-  position: absolute;
-  background-image: url(https://image.flaticon.com/icons/svg/25/25243.svg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  right: 4px;
-}
-
-.editor .toolbar .line .box .btn.has-submenu .submenu {
-  display: none;
-  position: absolute;
-  top: 36px;
-  left: -1px;
-  background-color: #FFF;
-  border: 1px solid #b5b5b5;
-  border-top: none;
-}
-
-.editor .toolbar .line .box .btn.has-submenu .submenu .btn {
-  width: 39px;
-}
-
-.editor .toolbar .line .box .btn.has-submenu:hover .submenu {
-  display: block;
-}
-
-.editor .content-area {
-  padding: 15px 12px;
-  line-height: 1.5;
-}
-
-.editor .content-area .editor-view {
-  outline: none;
-}
-
-.editor .content-area .editor-view p {
-  margin: 12px 0;
-}
-
-.editor .content-area .html-view {
-  outline: none;
-  display: none;
-  width: 100%;
-  height: 200px;
-  border: none;
-  resize: none;
+.btn-black {
+  background-color: #000 !important;
+  color: #fff;
 }
 

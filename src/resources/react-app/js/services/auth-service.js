@@ -4,7 +4,7 @@ import Http from '../http'
 export function login(credentials) {
     return dispatch => (
         new Promise((resolve, reject) => {
-            Http.post('/api/v3/login', credentials)
+            Http.post('/api/v1/auth/login', credentials)
                 .then(res => {
                     dispatch(action.authLogin(res.data));
                     return resolve();

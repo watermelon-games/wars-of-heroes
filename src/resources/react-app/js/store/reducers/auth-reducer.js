@@ -27,18 +27,13 @@ const Auth = (state = initialState, {type, payload = null}) => {
 };
 
 const authLogin = (state, payload) => {
-    const jwtToken = payload.token;
+    const jwtToken = payload.access_token;
     const user = payload.user;
-    if (!!payload.is_admin) {
-        localStorage.setItem('is_admin', true);
-    } else {
-        localStorage.setItem('is_admin', false);
-    }
+
     localStorage.setItem('jwt_token', jwtToken);
     Http.defaults.headers.common['Authorization'] = `Bearer ${jwtToken}`;
     state = Object.assign({}, state, {
         isAuthenticated: true,
-        isAdmin: localStorage.getItem('is_admin') === 'true',
         user
     });
     return state;
@@ -48,7 +43,6 @@ const authLogin = (state, payload) => {
 const checkAuth = (state) => {
     state = Object.assign({}, state, {
         isAuthenticated: !!localStorage.getItem('jwt_token'),
-        isAdmin: localStorage.getItem('is_admin'),
     });
     if (state.isAuthenticated) {
         Http.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('jwt_token')}`;
@@ -58,10 +52,8 @@ const checkAuth = (state) => {
 
 const logout = (state) => {
     localStorage.removeItem('jwt_token');
-    localStorage.setItem('is_admin', false);
     state = Object.assign({}, state, {
         isAuthenticated: false,
-        isAdmin: false,
         user
     });
     return state;

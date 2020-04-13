@@ -38730,81 +38730,44 @@ var Login = /*#__PURE__*/function (_React$Component) {
         });
       }
 
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "layoutAuthentication"
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "sidenav"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "layoutAuthentication_content"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("main", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "container"
+        className: "login-main-text"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Application", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), " Login Page"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Login or register from here to access."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "main"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row justify-content-center"
+        className: "col-md-6 col-sm-12"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-lg-5"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card shadow-lg border-0 rounded-lg mt-5"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-header"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
-        className: "text-center font-weight-light my-4"
-      }, "DronePilot | \u0410\u0432\u0442\u043E\u0440\u0438\u0437\u0430\u0446\u0438\u044F")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-body"
+        className: "login-form"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit,
         method: "POST"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        className: "small mb-1",
-        htmlFor: "inputEmailAddress"
-      }, "Email"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "User Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "form-control py-4",
         id: "email",
-        type: "email",
+        type: "text",
         name: "email",
         onChange: this.handleChange,
         placeholder: "\u0412\u0432\u0435\u0434\u0438\u0442\u0435 Email \u0430\u0434\u0440\u0435\u0441"
-      }), this.state.error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        style: {
-          color: 'red'
-        }
-      }, this.state.error)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "form-group"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        className: "small mb-1",
-        htmlFor: "inputPassword"
-      }, "Password"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        className: "form-control py-4",
-        id: "password",
-        name: "password",
-        type: "password",
-        onChange: this.handleChange,
-        placeholder: "\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u043F\u0430\u0440\u043E\u043B\u044C"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "custom-control custom-checkbox"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        className: "custom-control-input",
-        id: "rememberPasswordCheck",
-        type: "checkbox"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        className: "custom-control-label",
-        htmlFor: "rememberPasswordCheck"
-      }, "\u0417\u0430\u043F\u043E\u043C\u043D\u0438\u0442\u044C?"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "form-group d-flex align-items-center justify-content-between mt-4 mb-0"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/admin/forgot-password",
-        className: "small"
-      }, "\u0417\u0430\u0431\u044B\u043B\u0438 \u043F\u0430\u0440\u043E\u043B\u044C?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "\u041F\u0430\u0440\u043E\u043B\u044C"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "form-control py-4",
+        id: "password",
+        type: "password",
+        name: "password",
+        onChange: this.handleChange,
+        placeholder: "\u0412\u0432\u0435\u0434\u0438\u0442\u0435 Email \u0430\u0434\u0440\u0435\u0441"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit",
-        className: "btn btn-primary"
-      }, "\u0410\u0432\u0442\u043E\u0440\u0438\u0437\u0430\u0446\u0438\u044F")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-footer text-center"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "small"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/admin/register"
-      }, "\u0420\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u044F"))))))))));
+        className: "btn btn-black"
+      }, "Login"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/register",
+        className: "btn btn-secondary"
+      }, "Register"))))));
     }
   }]);
 
@@ -39189,7 +39152,7 @@ var PrivateRoute = function PrivateRoute(_ref) {
     render: function render(props) {
       return isAuthenticated ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_main__WEBPACK_IMPORTED_MODULE_3__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Component, props)) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router__WEBPACK_IMPORTED_MODULE_1__["Redirect"], {
         to: {
-          pathname: '/admin/login',
+          pathname: '/login',
           state: {
             from: props.location
           }
@@ -39368,7 +39331,7 @@ __webpack_require__.r(__webpack_exports__);
 function login(credentials) {
   return function (dispatch) {
     return new Promise(function (resolve, reject) {
-      _http__WEBPACK_IMPORTED_MODULE_1__["default"].post('/api/v3/login', credentials).then(function (res) {
+      _http__WEBPACK_IMPORTED_MODULE_1__["default"].post('/api/v1/auth/login', credentials).then(function (res) {
         dispatch(_store_actions_auth_action__WEBPACK_IMPORTED_MODULE_0__["authLogin"](res.data));
         return resolve();
       })["catch"](function (err) {
@@ -39621,20 +39584,12 @@ var Auth = function Auth() {
 };
 
 var authLogin = function authLogin(state, payload) {
-  var jwtToken = payload.token;
+  var jwtToken = payload.access_token;
   var user = payload.user;
-
-  if (!!payload.is_admin) {
-    localStorage.setItem('is_admin', true);
-  } else {
-    localStorage.setItem('is_admin', false);
-  }
-
   localStorage.setItem('jwt_token', jwtToken);
   _http__WEBPACK_IMPORTED_MODULE_1__["default"].defaults.headers.common['Authorization'] = "Bearer ".concat(jwtToken);
   state = Object.assign({}, state, {
     isAuthenticated: true,
-    isAdmin: localStorage.getItem('is_admin') === 'true',
     user: user
   });
   return state;
@@ -39642,8 +39597,7 @@ var authLogin = function authLogin(state, payload) {
 
 var checkAuth = function checkAuth(state) {
   state = Object.assign({}, state, {
-    isAuthenticated: !!localStorage.getItem('jwt_token'),
-    isAdmin: localStorage.getItem('is_admin')
+    isAuthenticated: !!localStorage.getItem('jwt_token')
   });
 
   if (state.isAuthenticated) {
@@ -39655,10 +39609,8 @@ var checkAuth = function checkAuth(state) {
 
 var logout = function logout(state) {
   localStorage.removeItem('jwt_token');
-  localStorage.setItem('is_admin', false);
   state = Object.assign({}, state, {
     isAuthenticated: false,
-    isAdmin: false,
     user: user
   });
   return state;
