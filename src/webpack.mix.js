@@ -12,5 +12,4 @@ const mix = require('laravel-mix');
  */
 
 mix.react('resources/react-app/js/app.js', 'public/js')
-    .sass('resources/react-app/sass/app.scss', 'public/css')
-    .styles(['resources/assets/css/semantic-ui.css', 'resources/assets/css/animate.css'], 'public/css/all.css');
+    .sass('resources/react-app/sass/app.scss', 'public/css');
