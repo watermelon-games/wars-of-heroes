@@ -45,7 +45,7 @@ class Login extends React.Component {
     }
 
     render() {
-        const {from} = this.props.location.state || {from: {pathname: '/admin/dashboard'}};
+        const {from} = this.props.location.state || {from: {pathname: '/character'}};
         const {isAuthenticated} = this.props;
 
         if (isAuthenticated) {

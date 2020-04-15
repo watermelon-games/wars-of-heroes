@@ -18,6 +18,8 @@ class Navigation extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
+        console.log(this.props);
+
         if (prevProps.authUser !== this.props.authUser) {
             this.setState({authUser: this.props.authUser})
         }
@@ -32,36 +34,17 @@ class Navigation extends React.Component {
 
     render() {
         return (
-            <nav className="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-                <Link to="/admin" className="navbar-brand">Dronepilot | Admin</Link>
-                <button className="btn btn-link btn-sm order-1 order-lg-0">
-                    <i className="fas fa-bars"/>
-                </button>
-
-                <form className="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-                    <div className="input-group">
-                        <input className="form-control" type="text" placeholder="Поиск.."/>
-                        <div className="input-group-append">
-                            <button className="btn btn-primary" type="button"><i className="fas fa-search"/></button>
-                        </div>
-                    </div>
-                </form>
-
-                <ul className="navbar-nav ml-auto ml-md-0">
-                    <li className="nav-item dropdown">
-                        <Link className="nav-link dropdown-toggle" to="#" onClick={this.handleDropdown}>
-                            <i className="fas fa-user fa-fw"/>
-                        </Link>
-
-                        <div className="dropdown-menu dropdown-menu-right" style={this.state.dropdownMenu ? closed : opened }>
-                            <Link className="dropdown-item" to="/admin/settings">Настройки</Link>
-                            <Link className="dropdown-item" to="/admin/logs">Логи</Link>
-                            <div className="dropdown-divider"/>
-                            <Link className="dropdown-item" to="/admin/logout">Выход</Link>
-                        </div>
-                    </li>
-                </ul>
-            </nav>
+            <div
+                className="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+                <h5 className="my-0 mr-md-auto font-weight-normal">War of Heroes</h5>
+                <nav className="my-2 my-md-0 mr-md-3">
+                    <a className="p-2 text-dark" href="#">Character</a>
+                    <a className="p-2 text-dark" href="#">Inventory</a>
+                    <a className="p-2 text-dark" href="#">Location</a>
+                    <a className="p-2 text-dark" href="#">Settings</a>
+                </nav>
+                <Link className="btn btn-outline-primary" to="/admin/logout">Exit</Link>
+            </div>
         );
     }
 }
