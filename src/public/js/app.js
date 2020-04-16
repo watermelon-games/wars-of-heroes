@@ -39040,14 +39040,18 @@ var CharacterInfo = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      user: {},
+      user: {
+        id: null,
+        name: null,
+        email: null
+      },
       character: {
         nickname: null,
         gender: null,
         avatar: null,
-        character: null,
         money: null,
         level: null,
+        available_stats: null,
         experience: null,
         next_level: null,
         wins: null,
@@ -39069,11 +39073,16 @@ var CharacterInfo = /*#__PURE__*/function (_React$Component) {
           fishing: null,
           hunting: null
         }
-      }
+      },
+      available: 0,
+      isUpdated: false
     };
 
     _this.props.dispatch(Object(_services_character_service__WEBPACK_IMPORTED_MODULE_2__["profile"])());
 
+    _this.handleIncrement = _this.handleIncrement.bind(_assertThisInitialized(_this));
+    _this.handleDecrement = _this.handleDecrement.bind(_assertThisInitialized(_this));
+    _this.checkAvailableStats = _this.checkAvailableStats.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -39082,9 +39091,41 @@ var CharacterInfo = /*#__PURE__*/function (_React$Component) {
     value: function componentDidUpdate(prevProps) {
       if (prevProps !== this.props) {
         this.setState({
-          character: this.props.character
+          character: this.props.character,
+          available: this.props.character.available_stats,
+          user: this.props.user
         });
       }
+    }
+  }, {
+    key: "handleIncrement",
+    value: function handleIncrement(event) {
+      event.preventDefault();
+
+      if (this.checkAvailableStats()) {
+        var stat = event.target.name;
+        var state = Object.assign({}, this.state);
+        state.character.stats[stat] = this.state.character.stats[stat] + 1;
+        state.available = this.state.available - 1;
+        state.isUpdated = true;
+        this.setState(state);
+      }
+    }
+  }, {
+    key: "handleDecrement",
+    value: function handleDecrement(event) {
+      event.preventDefault();
+      var stat = event.target.name;
+      var state = Object.assign({}, this.state);
+      state.character.stats[stat] = this.state.character.stats[stat] > 1 ? this.state.character.stats[stat] - 1 : 1;
+      state.available = this.state.available + 1;
+      state.isUpdated = true;
+      this.setState(state);
+    }
+  }, {
+    key: "checkAvailableStats",
+    value: function checkAvailableStats() {
+      return this.state.available > 0;
     }
   }, {
     key: "render",
@@ -39186,50 +39227,74 @@ var CharacterInfo = /*#__PURE__*/function (_React$Component) {
       }, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('stats')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "row"
       }, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('strength')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        name: "strength",
+        onClick: this.handleDecrement,
         className: "btn btn-secondary btn-circle btn-sm"
       }, "-"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "attribute-value"
       }, " ", character.stats.strength, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        name: "strength",
+        onClick: this.handleIncrement,
         className: "btn btn-secondary btn-circle btn-sm"
       }, "+"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "row"
       }, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('dexterity')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        name: "dexterity",
+        onClick: this.handleDecrement,
         className: "btn btn-secondary btn-circle btn-sm"
       }, "-"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "attribute-value"
-      }, " ", character.stats.strength, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, " ", character.stats.dexterity, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        name: "dexterity",
+        onClick: this.handleIncrement,
         className: "btn btn-secondary btn-circle btn-sm"
       }, "+"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "row"
       }, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('luck')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        name: "luck",
+        onClick: this.handleDecrement,
         className: "btn btn-secondary btn-circle btn-sm"
       }, "-"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "attribute-value"
       }, " ", character.stats.luck, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        name: "luck",
+        onClick: this.handleIncrement,
         className: "btn btn-secondary btn-circle btn-sm"
       }, "+"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "row"
       }, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('health')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        name: "health",
+        onClick: this.handleDecrement,
         className: "btn btn-secondary btn-circle btn-sm"
       }, "-"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "attribute-value"
       }, " ", character.stats.health, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        name: "health",
+        onClick: this.handleIncrement,
         className: "btn btn-secondary btn-circle btn-sm"
       }, "+"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "row"
       }, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('knowledge')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        name: "knowledge",
+        onClick: this.handleDecrement,
         className: "btn btn-secondary btn-circle btn-sm"
       }, "-"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "attribute-value"
       }, " ", character.stats.knowledge, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        name: "knowledge",
+        onClick: this.handleIncrement,
         className: "btn btn-secondary btn-circle btn-sm"
       }, "+"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "row"
       }, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('wisdom')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        name: "wisdom",
+        onClick: this.handleDecrement,
         className: "btn btn-secondary btn-circle btn-sm"
       }, "-"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "attribute-value"
       }, " ", character.stats.wisdom, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        name: "wisdom",
+        onClick: this.handleIncrement,
         className: "btn btn-secondary btn-circle btn-sm"
       }, "+"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
         className: "table"

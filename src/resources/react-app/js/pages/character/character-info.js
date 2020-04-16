@@ -8,14 +8,18 @@ class CharacterInfo extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            user: {},
+            user: {
+                id: null,
+                name: null,
+                email: null,
+            },
             character: {
                 nickname: null,
                 gender: null,
                 avatar: null,
-                character: null,
                 money: null,
                 level: null,
+                available_stats: null,
                 experience: null,
                 next_level: null,
                 wins: null,
@@ -38,16 +42,54 @@ class CharacterInfo extends React.Component {
                     hunting: null,
                 }
             },
+            available: 0,
+            isUpdated: false,
         };
         this.props.dispatch(profile())
+
+        this.handleIncrement = this.handleIncrement.bind(this);
+        this.handleDecrement = this.handleDecrement.bind(this);
+        this.checkAvailableStats = this.checkAvailableStats.bind(this);
     }
 
     componentDidUpdate(prevProps) {
         if (prevProps !== this.props) {
             this.setState({
                 character: this.props.character,
+                available: this.props.character.available_stats,
+                user: this.props.user,
             })
         }
+    }
+
+    handleIncrement(event) {
+        event.preventDefault();
+        if (this.checkAvailableStats()) {
+            let stat = event.target.name;
+            let state = Object.assign({}, this.state);
+
+            state.character.stats[stat] = this.state.character.stats[stat] + 1;
+            state.available = this.state.available - 1;
+            state.isUpdated = true;
+
+            this.setState(state)
+        }
+    }
+
+    handleDecrement(event) {
+        event.preventDefault();
+        let stat = event.target.name;
+        let state = Object.assign({}, this.state);
+
+        state.character.stats[stat] = this.state.character.stats[stat] > 1 ? this.state.character.stats[stat] - 1 : 1;
+        state.available = this.state.available + 1;
+        state.isUpdated = true;
+
+        this.setState(state)
+    }
+
+    checkAvailableStats() {
+        return this.state.available > 0;
     }
 
     render() {
@@ -151,49 +193,73 @@ class CharacterInfo extends React.Component {
                         <tr>
                             <th scope="row">{localization('strength')}</th>
                             <td>
-                                <button className="btn btn-secondary btn-circle btn-sm">-</button>
+                                <button name="strength" onClick={this.handleDecrement}
+                                        className="btn btn-secondary btn-circle btn-sm">-
+                                </button>
                                 <span className="attribute-value"> {character.stats.strength} </span>
-                                <button className="btn btn-secondary btn-circle btn-sm">+</button>
+                                <button name="strength" onClick={this.handleIncrement}
+                                        className="btn btn-secondary btn-circle btn-sm">+
+                                </button>
                             </td>
                         </tr>
                         <tr>
                             <th scope="row">{localization('dexterity')}</th>
                             <td>
-                                <button className="btn btn-secondary btn-circle btn-sm">-</button>
-                                <span className="attribute-value"> {character.stats.strength} </span>
-                                <button className="btn btn-secondary btn-circle btn-sm">+</button>
+                                <button name="dexterity" onClick={this.handleDecrement}
+                                        className="btn btn-secondary btn-circle btn-sm">-
+                                </button>
+                                <span className="attribute-value"> {character.stats.dexterity} </span>
+                                <button name="dexterity" onClick={this.handleIncrement}
+                                        className="btn btn-secondary btn-circle btn-sm">+
+                                </button>
                             </td>
                         </tr>
                         <tr>
                             <th scope="row">{localization('luck')}</th>
                             <td>
-                                <button className="btn btn-secondary btn-circle btn-sm">-</button>
+                                <button name="luck" onClick={this.handleDecrement}
+                                        className="btn btn-secondary btn-circle btn-sm">-
+                                </button>
                                 <span className="attribute-value"> {character.stats.luck} </span>
-                                <button className="btn btn-secondary btn-circle btn-sm">+</button>
+                                <button name="luck" onClick={this.handleIncrement}
+                                        className="btn btn-secondary btn-circle btn-sm">+
+                                </button>
                             </td>
                         </tr>
                         <tr>
                             <th scope="row">{localization('health')}</th>
                             <td>
-                                <button className="btn btn-secondary btn-circle btn-sm">-</button>
+                                <button name="health" onClick={this.handleDecrement}
+                                        className="btn btn-secondary btn-circle btn-sm">-
+                                </button>
                                 <span className="attribute-value"> {character.stats.health} </span>
-                                <button className="btn btn-secondary btn-circle btn-sm">+</button>
+                                <button name="health" onClick={this.handleIncrement}
+                                        className="btn btn-secondary btn-circle btn-sm">+
+                                </button>
                             </td>
                         </tr>
                         <tr>
                             <th scope="row">{localization('knowledge')}</th>
                             <td>
-                                <button className="btn btn-secondary btn-circle btn-sm">-</button>
+                                <button name="knowledge" onClick={this.handleDecrement}
+                                        className="btn btn-secondary btn-circle btn-sm">-
+                                </button>
                                 <span className="attribute-value"> {character.stats.knowledge} </span>
-                                <button className="btn btn-secondary btn-circle btn-sm">+</button>
+                                <button name="knowledge" onClick={this.handleIncrement}
+                                        className="btn btn-secondary btn-circle btn-sm">+
+                                </button>
                             </td>
                         </tr>
                         <tr>
                             <th scope="row">{localization('wisdom')}</th>
                             <td>
-                                <button className="btn btn-secondary btn-circle btn-sm">-</button>
+                                <button name="wisdom" onClick={this.handleDecrement}
+                                        className="btn btn-secondary btn-circle btn-sm">-
+                                </button>
                                 <span className="attribute-value"> {character.stats.wisdom} </span>
-                                <button className="btn btn-secondary btn-circle btn-sm">+</button>
+                                <button name="wisdom" onClick={this.handleIncrement}
+                                        className="btn btn-secondary btn-circle btn-sm">+
+                                </button>
                             </td>
                         </tr>
                         </tbody>
