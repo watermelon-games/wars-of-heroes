@@ -22,11 +22,11 @@ class ProfileController extends Controller
     {
         $user = $this->action->getUserWithCharacter(auth()->id());
 
-        $characters = $this->charactersAction->findByUser(auth()->id());
+        $character = $this->charactersAction->findByUser(auth()->id());
 
         return $this->returnResponse([
             'user' => $user,
-            'characters' => $characters,
+            'character' => $character,
         ], 200);
     }
 }

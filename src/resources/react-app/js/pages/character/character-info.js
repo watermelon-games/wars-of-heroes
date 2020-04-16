@@ -1,36 +1,68 @@
 import React from 'react';
-import {Link, Redirect} from 'react-router-dom'
 import {connect} from 'react-redux'
+import {profile} from "../../services/character-service";
+import {Redirect} from "react-router-dom";
+import {localization} from "../../helpers/i18n";
 
 class CharacterInfo extends React.Component {
     constructor(props) {
         super(props);
-
         this.state = {
             user: {},
-            character: {},
+            character: {
+                nickname: null,
+                gender: null,
+                avatar: null,
+                character: null,
+                money: null,
+                level: null,
+                experience: null,
+                next_level: null,
+                wins: null,
+                lost: null,
+                npc_victories: null,
+                npc_losses: null,
+                fatigue: null,
+                points_per_hit: null,
+                stats: {
+                    strength: null,
+                    dexterity: null,
+                    luck: null,
+                    health: null,
+                    knowledge: null,
+                    wisdom: null,
+                    theft: null,
+                    trade: null,
+                    artisan: null,
+                    fishing: null,
+                    hunting: null,
+                }
+            },
         };
+        this.props.dispatch(profile())
     }
 
     componentDidUpdate(prevProps) {
         if (prevProps !== this.props) {
             this.setState({
-                user: this.props.user,
+                character: this.props.character,
             })
         }
     }
 
     render() {
-        const {from} = this.props.location.state || {from: {pathname: '/character'}};
-        const {isAuthenticated} = this.props;
+        const character = this.state.character;
+
+        if (!character) {
+            return (
+                <Redirect to={'/character/create'}/>
+            )
+        }
 
         return (
             <div className="row">
-
                 <div className="col-md-12">
-                    <h2 className="text-center">
-                        Your character
-                    </h2>
+                    <h2 className="text-center">{ localization('your character') }</h2>
                 </div>
 
                 <div className="col-md-6">
@@ -46,7 +78,6 @@ class CharacterInfo extends React.Component {
                             25 / 40
                         </div>
                     </div>
-
                     <div className="row  justify-content-md-center character">
                         <div className="col col-lg-2">
                             <div className="item-left">Helmet</div>
@@ -55,7 +86,7 @@ class CharacterInfo extends React.Component {
                         </div>
 
                         <div className="col-md-auto">
-                            <div className="character-image">Character</div>
+                            <div className="character-image">{ localization('character') }</div>
                         </div>
 
                         <div className="col col-lg-2">
@@ -64,84 +95,6 @@ class CharacterInfo extends React.Component {
                             <div className="item-right">Jewelery</div>
                         </div>
                     </div>
-                </div>
-
-                <div className="col-md-6">
-                    <table className="table">
-                        <caption className="caption-top">General</caption>
-                        <tbody>
-                        <tr>
-                            <th scope="row">Name</th>
-                            <td>Character name</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Level</th>
-                            <td>1</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">XP</th>
-                            <td>
-                                <div className="progress">
-                                    <div className="progress-bar" role="progressbar" style={{width: '80%'}}
-                                         aria-valuenow="80"
-                                         aria-valuemin="80" aria-valuemax="100">
-                                        80 / 100
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-
-                    <table className="table">
-                        <caption className="caption-top">Attributes</caption>
-                        <tbody>
-                        <tr>
-                            <th scope="row">Strength</th>
-                            <td>
-                                <button className="btn btn-secondary btn-circle btn-sm">-</button>
-                                <span className="attribute-value">5</span>
-                                <button className="btn btn-secondary btn-circle btn-sm">+</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Agility</th>
-                            <td>
-                                <button className="btn btn-secondary btn-circle btn-sm">-</button>
-                                <span className="attribute-value">5</span>
-                                <button className="btn btn-secondary btn-circle btn-sm">+</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Constitution</th>
-                            <td>
-                                <button className="btn btn-secondary btn-circle btn-sm">-</button>
-                                <span className="attribute-value">5</span>
-                                <button className="btn btn-secondary btn-circle btn-sm">+</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Intelligence</th>
-                            <td>
-                                <button className="btn btn-secondary btn-circle btn-sm">-</button>
-                                <span className="attribute-value">5</span>
-                                <button className="btn btn-secondary btn-circle btn-sm">+</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Charisma</th>
-                            <td>
-                                <button className="btn btn-secondary btn-circle btn-sm">-</button>
-                                <span className="attribute-value">5</span>
-                                <button className="btn btn-secondary btn-circle btn-sm">+</button>
-                            </td>
-                        </tr>
-
-
-                        </tbody>
-                    </table>
-
-
                     <table className="table">
                         <caption className="caption-top">Statistics</caption>
                         <tbody>
@@ -171,6 +124,132 @@ class CharacterInfo extends React.Component {
                         </tbody>
                     </table>
                 </div>
+
+                <div className="col-md-6">
+                    <table className="table">
+                        <caption className="caption-top">General</caption>
+                        <tbody>
+                        <tr>
+                            <th scope="row">Name</th>
+                            <td>{ character.nickname }</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Level</th>
+                            <td>{ character.level }</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">XP</th>
+                            <td>
+                                <div className="progress">
+                                    <div className="progress-bar" role="progressbar" style={{width: '80%'}}
+                                         aria-valuenow="80"
+                                         aria-valuemin="80" aria-valuemax="100">
+                                        80 / 100
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <table className="table">
+                        <caption className="caption-top">Skills</caption>
+                        <tbody>
+                        <tr>
+                            <th scope="row">Strength</th>
+                            <td>
+                                <button className="btn btn-secondary btn-circle btn-sm">-</button>
+                                <span className="attribute-value"> { character.stats.strength } </span>
+                                <button className="btn btn-secondary btn-circle btn-sm">+</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Dexterity</th>
+                            <td>
+                                <button className="btn btn-secondary btn-circle btn-sm">-</button>
+                                <span className="attribute-value"> { character.stats.strength } </span>
+                                <button className="btn btn-secondary btn-circle btn-sm">+</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Luck</th>
+                            <td>
+                                <button className="btn btn-secondary btn-circle btn-sm">-</button>
+                                <span className="attribute-value"> { character.stats.luck } </span>
+                                <button className="btn btn-secondary btn-circle btn-sm">+</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Health</th>
+                            <td>
+                                <button className="btn btn-secondary btn-circle btn-sm">-</button>
+                                <span className="attribute-value"> { character.stats.health } </span>
+                                <button className="btn btn-secondary btn-circle btn-sm">+</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Knowledge</th>
+                            <td>
+                                <button className="btn btn-secondary btn-circle btn-sm">-</button>
+                                <span className="attribute-value"> { character.stats.knowledge } </span>
+                                <button className="btn btn-secondary btn-circle btn-sm">+</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Wisdom</th>
+                            <td>
+                                <button className="btn btn-secondary btn-circle btn-sm">-</button>
+                                <span className="attribute-value"> { character.stats.wisdom } </span>
+                                <button className="btn btn-secondary btn-circle btn-sm">+</button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <table className="table">
+                        <caption className="caption-top">Ability</caption>
+                        <tbody>
+                        <tr>
+                            <th scope="row">Theft</th>
+                            <td>
+                                <button className="btn btn-secondary btn-circle btn-sm">-</button>
+                                <span className="attribute-value"> { character.stats.theft } </span>
+                                <button className="btn btn-secondary btn-circle btn-sm">+</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Trade</th>
+                            <td>
+                                <button className="btn btn-secondary btn-circle btn-sm">-</button>
+                                <span className="attribute-value"> { character.stats.trade } </span>
+                                <button className="btn btn-secondary btn-circle btn-sm">+</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Artisan</th>
+                            <td>
+                                <button className="btn btn-secondary btn-circle btn-sm">-</button>
+                                <span className="attribute-value"> { character.stats.artisan } </span>
+                                <button className="btn btn-secondary btn-circle btn-sm">+</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Fishing</th>
+                            <td>
+                                <button className="btn btn-secondary btn-circle btn-sm">-</button>
+                                <span className="attribute-value"> { character.stats.fishing } </span>
+                                <button className="btn btn-secondary btn-circle btn-sm">+</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Hunting</th>
+                            <td>
+                                <button className="btn btn-secondary btn-circle btn-sm">-</button>
+                                <span className="attribute-value"> { character.stats.hunting } </span>
+                                <button className="btn btn-secondary btn-circle btn-sm">+</button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         );
     }
@@ -178,8 +257,8 @@ class CharacterInfo extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        isAuthenticated: state.Auth.isAuthenticated,
-        profile: state.Auth.user,
+        user: state.Auth.user,
+        character: state.Character.character,
     }
 };
 

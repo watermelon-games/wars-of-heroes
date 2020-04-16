@@ -17,13 +17,11 @@ class Logout extends React.Component {
 
         if (!isAuthenticated) {
             return (
-                <Redirect to={'/admin/login'}/>
+                <Redirect to={'/login'}/>
             )
         }
 
-        return (
-            <div></div>
-        );
+        return null;
     }
 }
 

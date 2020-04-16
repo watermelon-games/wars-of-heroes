@@ -14,12 +14,13 @@ class CharactersStatsRepository
         $model = new $this->model();
 
         $model->character_id = $id;
-        $model->strength = 0;
-        $model->dexterity = 0;
-        $model->luck = 0;
-        $model->health = 0;
-        $model->knowledge = 0;
-        $model->wisdom = 0;
+        $model->strength = 1;
+        $model->dexterity = 1;
+        $model->luck = 1;
+        $model->health = 1;
+        $model->knowledge = 1;
+        $model->wisdom = 1;
+
         $model->theft = 0;
         $model->trade = 0;
         $model->artisan = 0;
