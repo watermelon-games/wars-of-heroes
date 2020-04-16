@@ -24,6 +24,7 @@ const character = {
     fatigue: 0,
     gender: null,
     level: 0,
+    available_stats: 0,
     lost: 0,
     money: 0,
     next_level: 0,

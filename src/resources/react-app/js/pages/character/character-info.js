@@ -1,8 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux'
-import {profile} from "../../services/character-service";
-import {Redirect} from "react-router-dom";
-import {localization} from "../../helpers/i18n";
+import {profile} from '../../services/character-service';
+import {Redirect} from 'react-router-dom';
+import {localization} from '../../helpers/i18n';
 
 class CharacterInfo extends React.Component {
     constructor(props) {
@@ -62,7 +62,7 @@ class CharacterInfo extends React.Component {
         return (
             <div className="row">
                 <div className="col-md-12">
-                    <h2 className="text-center">{ localization('your character') }</h2>
+                    <h2 className="text-center">{localization('your character')}</h2>
                 </div>
 
                 <div className="col-md-6">
@@ -86,7 +86,7 @@ class CharacterInfo extends React.Component {
                         </div>
 
                         <div className="col-md-auto">
-                            <div className="character-image">{ localization('character') }</div>
+                            <div className="character-image">{localization('character')}</div>
                         </div>
 
                         <div className="col col-lg-2">
@@ -96,20 +96,20 @@ class CharacterInfo extends React.Component {
                         </div>
                     </div>
                     <table className="table">
-                        <caption className="caption-top">{ localization('statistics') }</caption>
+                        <caption className="caption-top">{localization('statistics')}</caption>
                         <tbody>
                         <tr>
-                            <th scope="row">Reputation</th>
+                            <th scope="row">{localization('reputation')}</th>
                             <td>0</td>
                         </tr>
                         <tr>
-                            <th scope="row">Money</th>
+                            <th scope="row">{localization('money')}</th>
                             <td>0</td>
                         </tr>
                         <tr>
                             <th scope="row">
                                 <a href="http://localhost/character/76f7a9a3-da9b-4e34-96a4-6e4b6fa1a1b1/battle">
-                                    Battles Won
+                                    {localization('battles won')}
                                 </a>
                             </th>
                             <td>0</td>
@@ -117,7 +117,7 @@ class CharacterInfo extends React.Component {
                         <tr>
                             <th scope="row">
                                 <a href="http://localhost/character/76f7a9a3-da9b-4e34-96a4-6e4b6fa1a1b1/battle">
-                                    Battles Lost
+                                    {localization('battles lost')}
                                 </a></th>
                             <td>0</td>
                         </tr>
@@ -127,124 +127,108 @@ class CharacterInfo extends React.Component {
 
                 <div className="col-md-6">
                     <table className="table">
-                        <caption className="caption-top">General</caption>
+                        <caption className="caption-top">{localization('general')}</caption>
                         <tbody>
                         <tr>
-                            <th scope="row">Name</th>
-                            <td>{ character.nickname }</td>
+                            <th scope="row">{localization('name')}</th>
+                            <td>{character.nickname}</td>
                         </tr>
                         <tr>
-                            <th scope="row">Level</th>
-                            <td>{ character.level }</td>
+                            <th scope="row">{localization('level')}</th>
+                            <td>{character.level}</td>
                         </tr>
                         <tr>
                             <th scope="row">XP</th>
                             <td>
-                                <div className="progress">
-                                    <div className="progress-bar" role="progressbar" style={{width: '80%'}}
-                                         aria-valuenow="80"
-                                         aria-valuemin="80" aria-valuemax="100">
-                                        80 / 100
-                                    </div>
-                                </div>
+                                <Experience character={character}/>
                             </td>
                         </tr>
                         </tbody>
                     </table>
                     <table className="table">
-                        <caption className="caption-top">Skills</caption>
+                        <caption className="caption-top">{localization('stats')}</caption>
                         <tbody>
                         <tr>
-                            <th scope="row">Strength</th>
+                            <th scope="row">{localization('strength')}</th>
                             <td>
                                 <button className="btn btn-secondary btn-circle btn-sm">-</button>
-                                <span className="attribute-value"> { character.stats.strength } </span>
+                                <span className="attribute-value"> {character.stats.strength} </span>
                                 <button className="btn btn-secondary btn-circle btn-sm">+</button>
                             </td>
                         </tr>
                         <tr>
-                            <th scope="row">Dexterity</th>
+                            <th scope="row">{localization('dexterity')}</th>
                             <td>
                                 <button className="btn btn-secondary btn-circle btn-sm">-</button>
-                                <span className="attribute-value"> { character.stats.strength } </span>
+                                <span className="attribute-value"> {character.stats.strength} </span>
                                 <button className="btn btn-secondary btn-circle btn-sm">+</button>
                             </td>
                         </tr>
                         <tr>
-                            <th scope="row">Luck</th>
+                            <th scope="row">{localization('luck')}</th>
                             <td>
                                 <button className="btn btn-secondary btn-circle btn-sm">-</button>
-                                <span className="attribute-value"> { character.stats.luck } </span>
+                                <span className="attribute-value"> {character.stats.luck} </span>
                                 <button className="btn btn-secondary btn-circle btn-sm">+</button>
                             </td>
                         </tr>
                         <tr>
-                            <th scope="row">Health</th>
+                            <th scope="row">{localization('health')}</th>
                             <td>
                                 <button className="btn btn-secondary btn-circle btn-sm">-</button>
-                                <span className="attribute-value"> { character.stats.health } </span>
+                                <span className="attribute-value"> {character.stats.health} </span>
                                 <button className="btn btn-secondary btn-circle btn-sm">+</button>
                             </td>
                         </tr>
                         <tr>
-                            <th scope="row">Knowledge</th>
+                            <th scope="row">{localization('knowledge')}</th>
                             <td>
                                 <button className="btn btn-secondary btn-circle btn-sm">-</button>
-                                <span className="attribute-value"> { character.stats.knowledge } </span>
+                                <span className="attribute-value"> {character.stats.knowledge} </span>
                                 <button className="btn btn-secondary btn-circle btn-sm">+</button>
                             </td>
                         </tr>
                         <tr>
-                            <th scope="row">Wisdom</th>
+                            <th scope="row">{localization('wisdom')}</th>
                             <td>
                                 <button className="btn btn-secondary btn-circle btn-sm">-</button>
-                                <span className="attribute-value"> { character.stats.wisdom } </span>
+                                <span className="attribute-value"> {character.stats.wisdom} </span>
                                 <button className="btn btn-secondary btn-circle btn-sm">+</button>
                             </td>
                         </tr>
                         </tbody>
                     </table>
                     <table className="table">
-                        <caption className="caption-top">Ability</caption>
+                        <caption className="caption-top">{localization('ability')}</caption>
                         <tbody>
                         <tr>
-                            <th scope="row">Theft</th>
+                            <th scope="row">{localization('theft')}</th>
                             <td>
-                                <button className="btn btn-secondary btn-circle btn-sm">-</button>
-                                <span className="attribute-value"> { character.stats.theft } </span>
-                                <button className="btn btn-secondary btn-circle btn-sm">+</button>
+                                <span className="attribute-value"> {character.stats.theft} </span>
                             </td>
                         </tr>
                         <tr>
-                            <th scope="row">Trade</th>
+                            <th scope="row">{localization('trade')}</th>
                             <td>
-                                <button className="btn btn-secondary btn-circle btn-sm">-</button>
-                                <span className="attribute-value"> { character.stats.trade } </span>
-                                <button className="btn btn-secondary btn-circle btn-sm">+</button>
+                                <span className="attribute-value"> {character.stats.trade} </span>
                             </td>
                         </tr>
                         <tr>
-                            <th scope="row">Artisan</th>
+                            <th scope="row">{localization('artisan')}</th>
                             <td>
-                                <button className="btn btn-secondary btn-circle btn-sm">-</button>
-                                <span className="attribute-value"> { character.stats.artisan } </span>
-                                <button className="btn btn-secondary btn-circle btn-sm">+</button>
+                                <span className="attribute-value"> {character.stats.artisan} </span>
                             </td>
                         </tr>
                         <tr>
-                            <th scope="row">Fishing</th>
+                            <th scope="row">{localization('fishing')}</th>
                             <td>
-                                <button className="btn btn-secondary btn-circle btn-sm">-</button>
-                                <span className="attribute-value"> { character.stats.fishing } </span>
-                                <button className="btn btn-secondary btn-circle btn-sm">+</button>
+                                <span className="attribute-value"> {character.stats.fishing} </span>
                             </td>
                         </tr>
                         <tr>
-                            <th scope="row">Hunting</th>
+                            <th scope="row">{localization('hunting')}</th>
                             <td>
-                                <button className="btn btn-secondary btn-circle btn-sm">-</button>
-                                <span className="attribute-value"> { character.stats.hunting } </span>
-                                <button className="btn btn-secondary btn-circle btn-sm">+</button>
+                                <span className="attribute-value"> {character.stats.hunting} </span>
                             </td>
                         </tr>
                         </tbody>
@@ -253,6 +237,36 @@ class CharacterInfo extends React.Component {
             </div>
         );
     }
+}
+
+const Experience = (props) => {
+    let {character} = props;
+    let percentage = (character.experience * 100) / character.next_level;
+
+    return (
+        <div className="progress">
+            <div className="progress-bar" role="progressbar" style={{width: percentage + '%'}}
+                 aria-valuenow={percentage}
+                 aria-valuemin={percentage} aria-valuemax="100">
+                {character.experience} / {character.next_level}
+            </div>
+        </div>
+    );
+}
+
+const HP = (props) => {
+    let {character} = props;
+    let hp = character.health;
+    let percentage = (character.experience * 100) / character.next_level;
+
+    return (
+        <div className="progress mx-5 my-3">
+            <div className="progress-bar bg-danger" role="progressbar" style={{width: '100%'}}
+                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+                50 / 50
+            </div>
+        </div>
+    );
 }
 
 const mapStateToProps = (state) => {

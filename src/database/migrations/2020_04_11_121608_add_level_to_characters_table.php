@@ -26,7 +26,7 @@ class AddLevelToCharactersTable extends Migration
     public function down()
     {
         Schema::table('characters', function (Blueprint $table) {
-            //
+            $table->dropColumn('level');
         });
     }
 }
