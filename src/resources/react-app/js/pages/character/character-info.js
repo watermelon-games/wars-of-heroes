@@ -96,7 +96,7 @@ class CharacterInfo extends React.Component {
                         </div>
                     </div>
                     <table className="table">
-                        <caption className="caption-top">Statistics</caption>
+                        <caption className="caption-top">{ localization('statistics') }</caption>
                         <tbody>
                         <tr>
                             <th scope="row">Reputation</th>

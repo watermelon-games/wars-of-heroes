@@ -26,6 +26,35 @@ export function login(credentials) {
     );
 }
 
+export function register(credentials) {
+    return dispatch => (
+        new Promise((resolve, reject) => {
+            Http.post('/api/v1/auth/register', credentials)
+                .then(res => {
+                    dispatch(action.authLogin(res.data));
+                    return resolve(res.data);
+                })
+                .catch(err => {
+                    const statusCode = err.response.status;
+                    const data = {
+                        error: null,
+                        statusCode,
+                    };
+                    if (statusCode === 422) {
+                        Object.values(err.response.data.message).map((value, i) => {
+                            data.error = value
+                        });
+
+                    } else if (statusCode === 400) {
+                        data.error = err.response.data.message;
+                    }
+                    return reject(data);
+                })
+        })
+    )
+}
+
+/** @deprecated */
 export function resetPassword(credentials) {
     return dispatch => (
         new Promise((resolve, reject) => {
@@ -50,6 +79,7 @@ export function resetPassword(credentials) {
     )
 }
 
+/** @deprecated */
 export function updatePassword(credentials) {
     return dispatch => (
         new Promise((resolve, reject) => {
@@ -74,33 +104,6 @@ export function updatePassword(credentials) {
                     if (statusCode === 401 || statusCode === 422) {
                         // status 401 means unauthorized
                         // status 422 means unprocessable entity
-                        data.error = err.response.data.message;
-                    }
-                    return reject(data);
-                })
-        })
-    )
-}
-
-export function register(credentials) {
-    return dispatch => (
-        new Promise((resolve, reject) => {
-            Http.post('/api/v3/register', credentials)
-                .then(res => {
-                    return resolve(res.data);
-                })
-                .catch(err => {
-                    const statusCode = err.response.status;
-                    const data = {
-                        error: null,
-                        statusCode,
-                    };
-                    if (statusCode === 422) {
-                        Object.values(err.response.data.message).map((value, i) => {
-                            data.error = value
-                        });
-
-                    } else if (statusCode === 400) {
                         data.error = err.response.data.message;
                     }
                     return reject(data);

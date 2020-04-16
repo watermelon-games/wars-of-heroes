@@ -2,6 +2,7 @@ import React from 'react';
 import {Link, Redirect} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {login} from '../../services/auth-service';
+import {localization} from '../../helpers/i18n';
 
 class Login extends React.Component {
     constructor(props) {
@@ -58,8 +59,8 @@ class Login extends React.Component {
             <div>
                 <div className="sidenav">
                     <div className="login-main-text">
-                        <h2>Application<br/> Login Page</h2>
-                        <p>Login or register from here to access.</p>
+                        <h2>{localization('wars of heroes')}<br/> {localization('login page')}</h2>
+                        <p>{localization('login or register from here to access')}</p>
                     </div>
                 </div>
                 <div className="main">
@@ -67,27 +68,28 @@ class Login extends React.Component {
                         <div className="login-form">
                             <form onSubmit={this.handleSubmit} method="POST">
                                 <div className="form-group">
-                                    <label>User Name</label>
+                                    <label>{localization('email')}</label>
                                     <input
                                         className="form-control py-4"
                                         id="email"
                                         type="text"
                                         name="email"
                                         onChange={this.handleChange}
-                                        placeholder="Введите Email адрес"/>
+                                        placeholder={localization('enter email')}/>
                                 </div>
                                 <div className="form-group">
-                                    <label>Пароль</label>
+                                    <label>{localization('password')}</label>
                                     <input
                                         className="form-control py-4"
                                         id="password"
                                         type="password"
                                         name="password"
                                         onChange={this.handleChange}
-                                        placeholder="Введите Email адрес"/>
+                                        placeholder={localization('enter password')}/>
                                 </div>
-                                <button type="submit" className="btn btn-black">Login</button>
-                                <Link to="/register" className="btn btn-secondary">Register</Link>
+                                <button type="submit" className="btn btn-black">{localization('login')}</button>
+                                <span>&nbsp;</span>
+                                <Link to="/register" className="btn btn-secondary">{localization('register')}</Link>
                             </form>
                         </div>
                     </div>

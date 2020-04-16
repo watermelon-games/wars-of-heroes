@@ -38463,6 +38463,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../services/auth-service */ "./resources/react-app/js/services/auth-service.js");
+/* harmony import */ var _helpers_i18n__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../helpers/i18n */ "./resources/react-app/js/helpers/i18n.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -38484,6 +38485,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
 
 
 
@@ -38568,7 +38570,7 @@ var Login = /*#__PURE__*/function (_React$Component) {
         className: "sidenav"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "login-main-text"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Application", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), " Login Page"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Login or register from here to access."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('wars of heroes'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), " ", Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('login page')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('login or register from here to access')))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-md-6 col-sm-12"
@@ -38579,29 +38581,29 @@ var Login = /*#__PURE__*/function (_React$Component) {
         method: "POST"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "User Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('email')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "form-control py-4",
         id: "email",
         type: "text",
         name: "email",
         onChange: this.handleChange,
-        placeholder: "\u0412\u0432\u0435\u0434\u0438\u0442\u0435 Email \u0430\u0434\u0440\u0435\u0441"
+        placeholder: Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('enter email')
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "\u041F\u0430\u0440\u043E\u043B\u044C"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('password')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "form-control py-4",
         id: "password",
         type: "password",
         name: "password",
         onChange: this.handleChange,
-        placeholder: "\u0412\u0432\u0435\u0434\u0438\u0442\u0435 Email \u0430\u0434\u0440\u0435\u0441"
+        placeholder: Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('enter password')
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit",
         className: "btn btn-black"
-      }, "Login"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      }, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('login')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "\xA0"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/register",
         className: "btn btn-secondary"
-      }, "Register"))))));
+      }, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('register')))))));
     }
   }]);
 
@@ -38632,6 +38634,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../services/auth-service */ "./resources/react-app/js/services/auth-service.js");
+/* harmony import */ var _helpers_i18n__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../helpers/i18n */ "./resources/react-app/js/helpers/i18n.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -38653,6 +38656,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
 
 
 
@@ -38720,110 +38724,69 @@ var Register = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _ref2 = this.props.location.state || {
-        from: {
-          pathname: '/admin/dashboard'
-        }
-      },
-          from = _ref2.from;
-
       var isAuthenticated = this.props.isAuthenticated;
 
       if (isAuthenticated) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Redirect"], {
-          to: from
+          to: '/login'
         });
       }
 
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "layoutAuthentication"
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "sidenav"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "layoutAuthentication_content"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("main", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "container"
+        className: "login-main-text"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('wars of heroes'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), " ", Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('register page')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('login or register from here to access')))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "main"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row justify-content-center"
+        className: "col-md-6 col-sm-12"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-lg-5"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card shadow-lg border-0 rounded-lg mt-5"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-header"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
-        className: "text-center font-weight-light my-4"
-      }, "DronePilot | \u0420\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u044F")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-body"
+        className: "login-form"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit,
         method: "POST"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        className: "small mb-1",
-        htmlFor: "name"
-      }, "\u0418\u043C\u044F"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('name')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "form-control py-4",
         id: "name",
         type: "text",
         name: "name",
         onChange: this.handleChange,
-        placeholder: "\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0432\u0430\u0448\u0435 \u0438\u043C\u044F"
-      }), this.state.error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        style: {
-          color: 'red'
-        }
-      }, this.state.error)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        placeholder: Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('enter name')
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        className: "small mb-1",
-        htmlFor: "email"
-      }, "Email"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('email')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "form-control py-4",
         id: "email",
-        type: "email",
+        type: "text",
         name: "email",
         onChange: this.handleChange,
-        placeholder: "\u0412\u0432\u0435\u0434\u0438\u0442\u0435 Email \u0430\u0434\u0440\u0435\u0441"
-      }), this.state.error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        style: {
-          color: 'red'
-        }
-      }, this.state.error)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        placeholder: Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('enter email')
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        className: "small mb-1",
-        htmlFor: "password"
-      }, "\u041F\u0430\u0440\u043E\u043B\u044C"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('password')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "form-control py-4",
         id: "password",
-        name: "password",
         type: "password",
+        name: "password",
         onChange: this.handleChange,
-        placeholder: "\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u043F\u0430\u0440\u043E\u043B\u044C"
+        placeholder: Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('enter password')
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        className: "small mb-1",
-        htmlFor: "password_confirmation"
-      }, "\u041F\u043E\u0432\u0442\u043E\u0440\u0438\u0442\u0435 \u043F\u0430\u0440\u043E\u043B\u044C"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('repeat password')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "form-control py-4",
         id: "password_confirmation",
-        name: "password_confirmation",
         type: "password",
+        name: "password_confirmation",
         onChange: this.handleChange,
-        placeholder: "\u041F\u043E\u0432\u0442\u043E\u0440\u0438\u0442\u0435 \u043F\u0430\u0440\u043E\u043B\u044C"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "form-group d-flex align-items-center justify-content-between mt-4 mb-0"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        placeholder: Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('repeat password')
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit",
-        className: "btn btn-primary"
-      }, "\u0420\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u044F")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-footer text-center"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "small"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/admin/login"
-      }, "\u0410\u0432\u0442\u043E\u0440\u0438\u0437\u0430\u0446\u0438\u044F"))))))))));
+        className: "btn btn-black"
+      }, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('register')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "\xA0"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/login"
+      }, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('login')))))));
     }
   }]);
 
@@ -39188,7 +39151,7 @@ var CharacterInfo = /*#__PURE__*/function (_React$Component) {
         className: "table"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("caption", {
         className: "caption-top"
-      }, "Statistics"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+      }, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('statistics')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "row"
       }, "Reputation"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "0")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "row"
@@ -39647,15 +39610,15 @@ var routes = [{
 /*!*********************************************************!*\
   !*** ./resources/react-app/js/services/auth-service.js ***!
   \*********************************************************/
-/*! exports provided: login, resetPassword, updatePassword, register */
+/*! exports provided: login, register, resetPassword, updatePassword */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "login", function() { return login; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "register", function() { return register; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "resetPassword", function() { return resetPassword; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updatePassword", function() { return updatePassword; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "register", function() { return register; });
 /* harmony import */ var _store_actions_auth_action__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../store/actions/auth-action */ "./resources/react-app/js/store/actions/auth-action.js");
 /* harmony import */ var _http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../http */ "./resources/react-app/js/http.js");
 
@@ -39684,6 +39647,34 @@ function login(credentials) {
     });
   };
 }
+function register(credentials) {
+  return function (dispatch) {
+    return new Promise(function (resolve, reject) {
+      _http__WEBPACK_IMPORTED_MODULE_1__["default"].post('/api/v1/auth/register', credentials).then(function (res) {
+        dispatch(_store_actions_auth_action__WEBPACK_IMPORTED_MODULE_0__["authLogin"](res.data));
+        return resolve(res.data);
+      })["catch"](function (err) {
+        var statusCode = err.response.status;
+        var data = {
+          error: null,
+          statusCode: statusCode
+        };
+
+        if (statusCode === 422) {
+          Object.values(err.response.data.message).map(function (value, i) {
+            data.error = value;
+          });
+        } else if (statusCode === 400) {
+          data.error = err.response.data.message;
+        }
+
+        return reject(data);
+      });
+    });
+  };
+}
+/** @deprecated */
+
 function resetPassword(credentials) {
   return function (dispatch) {
     return new Promise(function (resolve, reject) {
@@ -39707,6 +39698,8 @@ function resetPassword(credentials) {
     });
   };
 }
+/** @deprecated */
+
 function updatePassword(credentials) {
   return function (dispatch) {
     return new Promise(function (resolve, reject) {
@@ -39732,31 +39725,6 @@ function updatePassword(credentials) {
         if (statusCode === 401 || statusCode === 422) {
           // status 401 means unauthorized
           // status 422 means unprocessable entity
-          data.error = err.response.data.message;
-        }
-
-        return reject(data);
-      });
-    });
-  };
-}
-function register(credentials) {
-  return function (dispatch) {
-    return new Promise(function (resolve, reject) {
-      _http__WEBPACK_IMPORTED_MODULE_1__["default"].post('/api/v3/register', credentials).then(function (res) {
-        return resolve(res.data);
-      })["catch"](function (err) {
-        var statusCode = err.response.status;
-        var data = {
-          error: null,
-          statusCode: statusCode
-        };
-
-        if (statusCode === 422) {
-          Object.values(err.response.data.message).map(function (value, i) {
-            data.error = value;
-          });
-        } else if (statusCode === 400) {
           data.error = err.response.data.message;
         }
 
@@ -40184,10 +40152,10 @@ function persistStore(state, payload) {
 /*!**********************************************************!*\
   !*** ./resources/react-app/js/translations/ru/form.json ***!
   \**********************************************************/
-/*! exports provided: character, default */
+/*! exports provided: wars of heroes, login page, register page, login or register from here to access, login, register, email, password, name, enter email, enter password, repeat password, enter name, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"character\":\"Персонаж\"}");
+module.exports = JSON.parse("{\"wars of heroes\":\"Wars Of Heroes\",\"login page\":\"Страница авторизации\",\"register page\":\"Страница регистрации\",\"login or register from here to access\":\"Авторизируйтесь или зарегистрируйтесь\",\"login\":\"Авторизация\",\"register\":\"Регистрация\",\"email\":\"Email\",\"password\":\"Пароль\",\"name\":\"Имя\",\"enter email\":\"Введите Email адрес\",\"enter password\":\"Введите пароль\",\"repeat password\":\"Повторите пароль\",\"enter name\":\"Введите имя\"}");
 
 /***/ }),
 
@@ -40206,10 +40174,10 @@ module.exports = JSON.parse("{\"module\":\"commonjs\",\"target\":\"es5\"}");
 /*!************************************************************!*\
   !*** ./resources/react-app/js/translations/ru/static.json ***!
   \************************************************************/
-/*! exports provided: your character, default */
+/*! exports provided: your character, statistics, character, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"your character\":\"Ваш персонаж\"}");
+module.exports = JSON.parse("{\"your character\":\"Ваш персонаж\",\"statistics\":\"Статистика\",\"character\":\"Персонаж\"}");
 
 /***/ }),
 

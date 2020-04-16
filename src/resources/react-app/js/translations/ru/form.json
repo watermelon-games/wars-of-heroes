@@ -1,3 +1,15 @@
 {
-    "character": "Персонаж"
+    "wars of heroes": "Wars Of Heroes",
+    "login page": "Страница авторизации",
+    "register page": "Страница регистрации",
+    "login or register from here to access": "Авторизируйтесь или зарегистрируйтесь",
+    "login": "Авторизация",
+    "register": "Регистрация",
+    "email": "Email",
+    "password": "Пароль",
+    "name": "Имя",
+    "enter email": "Введите Email адрес",
+    "enter password": "Введите пароль",
+    "repeat password": "Повторите пароль",
+    "enter name": "Введите имя"
 }
