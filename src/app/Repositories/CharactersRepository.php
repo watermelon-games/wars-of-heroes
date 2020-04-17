@@ -14,14 +14,19 @@ class CharactersRepository
         return $this->model::where('user_id', $userId)->with('stats')->first();
     }
 
-    public function create(array $request): Characters
+    public function find(int $id): ?Characters
+    {
+        return $this->model::where('id', $id)->first();
+    }
+
+    public function create(array $data): Characters
     {
         /** @var $model Characters */
         $model = new $this->model();
 
         $model->user_id = auth()->id();
-        $model->nickname = $request['nickname'];
-        $model->gender = $request['gender'];
+        $model->nickname = $data['nickname'];
+        $model->gender = $data['gender'];
         $model->money = 0;
         $model->level = 1;
         $model->experience = 0;
@@ -32,9 +37,20 @@ class CharactersRepository
         $model->npc_losses = 0;
         $model->fatigue = 0;
         $model->points_per_hit = 30;
+        $model->available_stats = 15;
 
         $model->save();
 
         return $model;
+    }
+
+    public function updateAvailableStats(int $id, int $stats): void
+    {
+        /** @var $character Characters */
+        $character = self::find($id);
+
+        $character->available_stats = $stats;
+
+        $character->save();
     }
 }

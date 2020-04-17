@@ -39083,6 +39083,7 @@ var CharacterInfo = /*#__PURE__*/function (_React$Component) {
     _this.handleIncrement = _this.handleIncrement.bind(_assertThisInitialized(_this));
     _this.handleDecrement = _this.handleDecrement.bind(_assertThisInitialized(_this));
     _this.checkAvailableStats = _this.checkAvailableStats.bind(_assertThisInitialized(_this));
+    _this.handleUpdateStats = _this.handleUpdateStats.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -39092,7 +39093,6 @@ var CharacterInfo = /*#__PURE__*/function (_React$Component) {
       if (prevProps !== this.props) {
         this.setState({
           character: this.props.character,
-          available: this.props.character.available_stats,
           user: this.props.user
         });
       }
@@ -39106,7 +39106,7 @@ var CharacterInfo = /*#__PURE__*/function (_React$Component) {
         var stat = event.target.name;
         var state = Object.assign({}, this.state);
         state.character.stats[stat] = this.state.character.stats[stat] + 1;
-        state.available = this.state.available - 1;
+        state.character.available_stats = this.state.character.available_stats - 1;
         state.isUpdated = true;
         this.setState(state);
       }
@@ -39118,19 +39118,28 @@ var CharacterInfo = /*#__PURE__*/function (_React$Component) {
       var stat = event.target.name;
       var state = Object.assign({}, this.state);
       state.character.stats[stat] = this.state.character.stats[stat] > 1 ? this.state.character.stats[stat] - 1 : 1;
-      state.available = this.state.available + 1;
+      state.character.available_stats = this.state.character.available_stats + 1;
       state.isUpdated = true;
       this.setState(state);
     }
   }, {
     key: "checkAvailableStats",
     value: function checkAvailableStats() {
-      return this.state.available > 0;
+      return this.state.character.available_stats > 0;
+    }
+  }, {
+    key: "handleUpdateStats",
+    value: function handleUpdateStats(event) {
+      event.preventDefault();
+      this.props.dispatch(Object(_services_character_service__WEBPACK_IMPORTED_MODULE_2__["updateCharacterStats"])(this.state.character)).then(function (success) {
+        console.log(success);
+      });
     }
   }, {
     key: "render",
     value: function render() {
       var character = this.state.character;
+      var isAvailable = this.checkAvailableStats();
 
       if (!character) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Redirect"], {
@@ -39226,77 +39235,72 @@ var CharacterInfo = /*#__PURE__*/function (_React$Component) {
         className: "caption-top"
       }, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('stats')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "row"
-      }, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('strength')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('strength')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, isAvailable && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         name: "strength",
         onClick: this.handleDecrement,
         className: "btn btn-secondary btn-circle btn-sm"
       }, "-"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "attribute-value"
-      }, " ", character.stats.strength, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, " ", character.stats.strength, " "), isAvailable && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         name: "strength",
         onClick: this.handleIncrement,
         className: "btn btn-secondary btn-circle btn-sm"
       }, "+"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "row"
-      }, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('dexterity')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('dexterity')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, isAvailable && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         name: "dexterity",
         onClick: this.handleDecrement,
         className: "btn btn-secondary btn-circle btn-sm"
       }, "-"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "attribute-value"
-      }, " ", character.stats.dexterity, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, " ", character.stats.dexterity, " "), isAvailable && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         name: "dexterity",
         onClick: this.handleIncrement,
         className: "btn btn-secondary btn-circle btn-sm"
       }, "+"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "row"
-      }, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('luck')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('luck')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, isAvailable && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         name: "luck",
         onClick: this.handleDecrement,
         className: "btn btn-secondary btn-circle btn-sm"
       }, "-"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "attribute-value"
-      }, " ", character.stats.luck, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, " ", character.stats.luck, " "), isAvailable && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         name: "luck",
         onClick: this.handleIncrement,
         className: "btn btn-secondary btn-circle btn-sm"
       }, "+"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "row"
-      }, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('health')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('health')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, isAvailable && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         name: "health",
         onClick: this.handleDecrement,
         className: "btn btn-secondary btn-circle btn-sm"
       }, "-"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "attribute-value"
-      }, " ", character.stats.health, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, " ", character.stats.health, " "), isAvailable && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         name: "health",
         onClick: this.handleIncrement,
         className: "btn btn-secondary btn-circle btn-sm"
       }, "+"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "row"
-      }, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('knowledge')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('knowledge')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, isAvailable && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         name: "knowledge",
         onClick: this.handleDecrement,
         className: "btn btn-secondary btn-circle btn-sm"
       }, "-"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "attribute-value"
-      }, " ", character.stats.knowledge, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, " ", character.stats.knowledge, " "), isAvailable && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         name: "knowledge",
         onClick: this.handleIncrement,
         className: "btn btn-secondary btn-circle btn-sm"
       }, "+"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "row"
-      }, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('wisdom')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        name: "wisdom",
-        onClick: this.handleDecrement,
-        className: "btn btn-secondary btn-circle btn-sm"
-      }, "-"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      }, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('wisdom')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "attribute-value"
-      }, " ", character.stats.wisdom, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        name: "wisdom",
-        onClick: this.handleIncrement,
-        className: "btn btn-secondary btn-circle btn-sm"
-      }, "+"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+      }, " ", character.stats.wisdom, " "))))), isAvailable && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-success float-right",
+        onClick: this.handleUpdateStats
+      }, "\u0421\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
         className: "table"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("caption", {
         className: "caption-top"
@@ -39864,12 +39868,13 @@ function updatePassword(credentials) {
 /*!**************************************************************!*\
   !*** ./resources/react-app/js/services/character-service.js ***!
   \**************************************************************/
-/*! exports provided: create, profile */
+/*! exports provided: create, updateCharacterStats, profile */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "create", function() { return create; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateCharacterStats", function() { return updateCharacterStats; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "profile", function() { return profile; });
 /* harmony import */ var _http__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../http */ "./resources/react-app/js/http.js");
 /* harmony import */ var _store_actions_character_action__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../store/actions/character-action */ "./resources/react-app/js/store/actions/character-action.js");
@@ -39880,6 +39885,30 @@ function create(data) {
     return new Promise(function (resolve, reject) {
       _http__WEBPACK_IMPORTED_MODULE_0__["default"].post('/api/v1/characters/create', data).then(function (res) {
         dispatch(_store_actions_character_action__WEBPACK_IMPORTED_MODULE_1__["characterCreate"](res.data));
+        return resolve();
+      })["catch"](function (err) {
+        var statusCode = err.response.status;
+        var data = {
+          error: null,
+          statusCode: statusCode
+        };
+
+        if (statusCode === 401 || statusCode === 422) {
+          // status 401 means unauthorized
+          // status 422 means unprocessable entity
+          data.error = err.response.data.message;
+        }
+
+        return reject(data);
+      });
+    });
+  };
+}
+function updateCharacterStats(data) {
+  return function (dispatch) {
+    return new Promise(function (resolve, reject) {
+      _http__WEBPACK_IMPORTED_MODULE_0__["default"].post('/api/v1/characters/update-stats', data).then(function (res) {
+        dispatch(_store_actions_character_action__WEBPACK_IMPORTED_MODULE_1__["characterUpdateStats"](res.data));
         return resolve();
       })["catch"](function (err) {
         var statusCode = err.response.status;
@@ -39930,7 +39959,7 @@ function profile() {
 /*!************************************************************!*\
   !*** ./resources/react-app/js/store/action-types/index.js ***!
   \************************************************************/
-/*! exports provided: AUTH_LOGIN, AUTH_CHECK, AUTH_LOGOUT, CHARACTER_CREATE, USER_PROFILE */
+/*! exports provided: AUTH_LOGIN, AUTH_CHECK, AUTH_LOGOUT, CHARACTER_CREATE, CHARACTER_UPDATE_STATS, USER_PROFILE */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -39939,11 +39968,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AUTH_CHECK", function() { return AUTH_CHECK; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AUTH_LOGOUT", function() { return AUTH_LOGOUT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CHARACTER_CREATE", function() { return CHARACTER_CREATE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CHARACTER_UPDATE_STATS", function() { return CHARACTER_UPDATE_STATS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "USER_PROFILE", function() { return USER_PROFILE; });
 var AUTH_LOGIN = 'AUTH_LOGIN';
 var AUTH_CHECK = 'AUTH_CHECK';
 var AUTH_LOGOUT = 'AUTH_LOGOUT';
 var CHARACTER_CREATE = 'CHARACTER_CREATE';
+var CHARACTER_UPDATE_STATS = 'CHARACTER_UPDATE_STATS';
 var USER_PROFILE = 'USER_PROFILE';
 
 /***/ }),
@@ -39985,13 +40016,14 @@ function authCheck() {
 /*!******************************************************************!*\
   !*** ./resources/react-app/js/store/actions/character-action.js ***!
   \******************************************************************/
-/*! exports provided: characterProfile, characterCreate */
+/*! exports provided: characterProfile, characterCreate, characterUpdateStats */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "characterProfile", function() { return characterProfile; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "characterCreate", function() { return characterCreate; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "characterUpdateStats", function() { return characterUpdateStats; });
 /* harmony import */ var _action_types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../action-types */ "./resources/react-app/js/store/action-types/index.js");
 
 function characterProfile(payload) {
@@ -40003,6 +40035,12 @@ function characterProfile(payload) {
 function characterCreate(payload) {
   return {
     type: _action_types__WEBPACK_IMPORTED_MODULE_0__["USER_PROFILE"],
+    payload: payload
+  };
+}
+function characterUpdateStats(payload) {
+  return {
+    type: _action_types__WEBPACK_IMPORTED_MODULE_0__["CHARACTER_UPDATE_STATS"],
     payload: payload
   };
 }
@@ -40190,6 +40228,9 @@ var Character = function Character() {
 
   switch (type) {
     case _action_types__WEBPACK_IMPORTED_MODULE_0__["CHARACTER_CREATE"]:
+      return characterProfile(state, payload);
+
+    case _action_types__WEBPACK_IMPORTED_MODULE_0__["CHARACTER_UPDATE_STATS"]:
       return characterProfile(state, payload);
 
     case _action_types__WEBPACK_IMPORTED_MODULE_0__["USER_PROFILE"]:

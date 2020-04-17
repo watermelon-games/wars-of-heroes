@@ -20,7 +20,18 @@ class CharactersController extends Controller
         $character = $this->action->create($request->all(), auth()->id());
 
         return $this->returnResponse([
+            'created' => true,
             'character' => $character,
         ], 201);
+    }
+
+    public function updateStats(Request $request)
+    {
+        $character = $this->action->updateStats($request->all(), auth()->id());
+
+        return $this->returnResponse([
+            'updated' => true,
+            'character' => $character,
+        ], 200);
     }
 }

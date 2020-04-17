@@ -43,6 +43,8 @@ const Character = (state = initialState, {type, payload = null}) => {
     switch (type) {
         case ActionTypes.CHARACTER_CREATE:
             return characterProfile(state, payload);
+        case ActionTypes.CHARACTER_UPDATE_STATS:
+            return characterProfile(state, payload);
         case ActionTypes.USER_PROFILE:
             return characterProfile(state, payload);
         default:

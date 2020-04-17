@@ -8,6 +8,11 @@ class CharactersStatsRepository
 {
     private $model = CharactersStats::class;
 
+    public function findByCharacterId(int $characterId): ?CharactersStats
+    {
+        return $this->model::where('character_id', $characterId)->first();
+    }
+
     public function create(int $id): void
     {
         /** @var $model CharactersStats */
@@ -28,5 +33,20 @@ class CharactersStatsRepository
         $model->hunting = 0;
 
         $model->save();
+    }
+
+    public function update(array $data): void
+    {
+        /** @var $characterStats CharactersStats */
+        $characterStats = self::findByCharacterId($data['character_id']);
+
+        $characterStats->strength = $data['strength'];
+        $characterStats->dexterity = $data['dexterity'];
+        $characterStats->luck = $data['luck'];
+        $characterStats->health = $data['health'];
+        $characterStats->knowledge = $data['knowledge'];
+        $characterStats->wisdom = $data['wisdom'];
+
+        $characterStats->save();
     }
 }

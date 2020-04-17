@@ -13,3 +13,10 @@ export function characterCreate(payload) {
         payload
     }
 }
+
+export function characterUpdateStats(payload) {
+    return {
+        type: ActionTypes.CHARACTER_UPDATE_STATS,
+        payload
+    }
+}

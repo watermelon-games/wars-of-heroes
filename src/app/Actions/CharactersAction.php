@@ -38,6 +38,15 @@ class CharactersAction
         return $this->findByUser($userId);
     }
 
+    public function updateStats(array $data, int $userId): Characters
+    {
+        $this->charactersStatsRepository->update($data['stats']);
+
+        $this->charactersRepository->updateAvailableStats($data['id'], $data['available_stats']);
+
+        return $this->findByUser($userId);
+    }
+
     public function findByUser(int $userId): ?Characters
     {
         return $this->charactersRepository->findByUser($userId);

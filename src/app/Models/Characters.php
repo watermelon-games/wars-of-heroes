@@ -25,6 +25,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property integer $fatigue
  * @property integer $points_per_hit
+ * @property integer $available_stats
  *
  * @property string $created_at
  * @property string $updated_at
@@ -53,6 +54,7 @@ class Characters extends Model
         'npc_losses',
         'fatigue',
         'points_per_hit',
+        'available_stats',
         'created_at',
         'updated_at',
     ];

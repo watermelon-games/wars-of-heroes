@@ -34,6 +34,7 @@ Route::prefix('v1')->group(function () {
         Route::namespace('Api')->group(function () {
             Route::middleware(['auth:api'])->group(function () {
                 Route::post('create', 'CharactersController@create')->name('characters.create');
+                Route::post('update-stats', 'CharactersController@updateStats')->name('characters.update.stats');
             });
         });
     });

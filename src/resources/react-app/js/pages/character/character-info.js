@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux'
-import {profile} from '../../services/character-service';
+import {profile, updateCharacterStats} from '../../services/character-service';
 import {Redirect} from 'react-router-dom';
 import {localization} from '../../helpers/i18n';
 
@@ -45,18 +45,19 @@ class CharacterInfo extends React.Component {
             available: 0,
             isUpdated: false,
         };
+
         this.props.dispatch(profile())
 
         this.handleIncrement = this.handleIncrement.bind(this);
         this.handleDecrement = this.handleDecrement.bind(this);
         this.checkAvailableStats = this.checkAvailableStats.bind(this);
+        this.handleUpdateStats = this.handleUpdateStats.bind(this);
     }
 
     componentDidUpdate(prevProps) {
         if (prevProps !== this.props) {
             this.setState({
                 character: this.props.character,
-                available: this.props.character.available_stats,
                 user: this.props.user,
             })
         }
@@ -69,7 +70,7 @@ class CharacterInfo extends React.Component {
             let state = Object.assign({}, this.state);
 
             state.character.stats[stat] = this.state.character.stats[stat] + 1;
-            state.available = this.state.available - 1;
+            state.character.available_stats = this.state.character.available_stats - 1;
             state.isUpdated = true;
 
             this.setState(state)
@@ -82,18 +83,28 @@ class CharacterInfo extends React.Component {
         let state = Object.assign({}, this.state);
 
         state.character.stats[stat] = this.state.character.stats[stat] > 1 ? this.state.character.stats[stat] - 1 : 1;
-        state.available = this.state.available + 1;
+        state.character.available_stats = this.state.character.available_stats + 1;
         state.isUpdated = true;
 
         this.setState(state)
     }
 
     checkAvailableStats() {
-        return this.state.available > 0;
+        return this.state.character.available_stats > 0;
+    }
+
+    handleUpdateStats(event) {
+        event.preventDefault();
+
+        this.props.dispatch(updateCharacterStats(this.state.character))
+            .then((success) => {
+                console.log(success);
+            })
     }
 
     render() {
         const character = this.state.character;
+        const isAvailable = this.checkAvailableStats();
 
         if (!character) {
             return (
@@ -193,77 +204,106 @@ class CharacterInfo extends React.Component {
                         <tr>
                             <th scope="row">{localization('strength')}</th>
                             <td>
+                                {isAvailable &&
                                 <button name="strength" onClick={this.handleDecrement}
                                         className="btn btn-secondary btn-circle btn-sm">-
                                 </button>
+                                }
+
                                 <span className="attribute-value"> {character.stats.strength} </span>
+
+                                {isAvailable &&
                                 <button name="strength" onClick={this.handleIncrement}
                                         className="btn btn-secondary btn-circle btn-sm">+
                                 </button>
+                                }
                             </td>
                         </tr>
                         <tr>
                             <th scope="row">{localization('dexterity')}</th>
                             <td>
+                                {isAvailable &&
                                 <button name="dexterity" onClick={this.handleDecrement}
                                         className="btn btn-secondary btn-circle btn-sm">-
                                 </button>
+                                }
+
                                 <span className="attribute-value"> {character.stats.dexterity} </span>
+
+                                {isAvailable &&
                                 <button name="dexterity" onClick={this.handleIncrement}
                                         className="btn btn-secondary btn-circle btn-sm">+
                                 </button>
+                                }
                             </td>
                         </tr>
                         <tr>
                             <th scope="row">{localization('luck')}</th>
                             <td>
+                                {isAvailable &&
                                 <button name="luck" onClick={this.handleDecrement}
                                         className="btn btn-secondary btn-circle btn-sm">-
                                 </button>
+                                }
+
                                 <span className="attribute-value"> {character.stats.luck} </span>
+
+                                {isAvailable &&
                                 <button name="luck" onClick={this.handleIncrement}
                                         className="btn btn-secondary btn-circle btn-sm">+
                                 </button>
+                                }
                             </td>
                         </tr>
                         <tr>
                             <th scope="row">{localization('health')}</th>
                             <td>
+                                {isAvailable &&
                                 <button name="health" onClick={this.handleDecrement}
                                         className="btn btn-secondary btn-circle btn-sm">-
                                 </button>
+                                }
+
                                 <span className="attribute-value"> {character.stats.health} </span>
+
+                                {isAvailable &&
                                 <button name="health" onClick={this.handleIncrement}
                                         className="btn btn-secondary btn-circle btn-sm">+
                                 </button>
+                                }
                             </td>
                         </tr>
                         <tr>
                             <th scope="row">{localization('knowledge')}</th>
                             <td>
+                                {isAvailable &&
                                 <button name="knowledge" onClick={this.handleDecrement}
                                         className="btn btn-secondary btn-circle btn-sm">-
                                 </button>
+                                }
+
                                 <span className="attribute-value"> {character.stats.knowledge} </span>
+
+                                {isAvailable &&
                                 <button name="knowledge" onClick={this.handleIncrement}
                                         className="btn btn-secondary btn-circle btn-sm">+
                                 </button>
+                                }
                             </td>
                         </tr>
                         <tr>
                             <th scope="row">{localization('wisdom')}</th>
                             <td>
-                                <button name="wisdom" onClick={this.handleDecrement}
-                                        className="btn btn-secondary btn-circle btn-sm">-
-                                </button>
                                 <span className="attribute-value"> {character.stats.wisdom} </span>
-                                <button name="wisdom" onClick={this.handleIncrement}
-                                        className="btn btn-secondary btn-circle btn-sm">+
-                                </button>
                             </td>
                         </tr>
                         </tbody>
                     </table>
+
+                    {isAvailable &&
+                    <button className="btn btn-success float-right" onClick={this.handleUpdateStats}>Сохранить</button>
+                    }
+
                     <table className="table">
                         <caption className="caption-top">{localization('ability')}</caption>
                         <tbody>
