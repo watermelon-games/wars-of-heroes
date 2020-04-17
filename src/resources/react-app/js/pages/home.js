@@ -1,13 +1,29 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {Redirect} from 'react-router-dom';
 
-function Home() {
-    return (
-        <div className="flex flex-col min-h-screen">
-            <div className="flex flex-1 flex-col items-center justify-center">
-                <h1 className="text-indigo text-2xl p-2 font-thin uppercase"> Start crafting your app now!</h1>
-            </div>
-        </div>
-    );
+class Home extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        const {isAuthenticated} = this.props;
+
+        if (isAuthenticated) {
+            return (
+                <Redirect to="/character"/>
+            )
+        }
+
+        return null;
+    }
 }
 
-export default Home;
+const mapStateToProps = (state) => {
+    return {
+        isAuthenticated: state.Auth.isAuthenticated,
+    }
+};
+
+export default connect(mapStateToProps)(Home)

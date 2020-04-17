@@ -15,7 +15,7 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
 
-<body class="sb-nav-fixed">
+<body>
 <div id="app"></div>
 
 <!-- Styles -->

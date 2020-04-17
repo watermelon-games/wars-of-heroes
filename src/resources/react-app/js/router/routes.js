@@ -4,7 +4,7 @@ import Register from '../pages/auth/register'
 import CharacterInfo from '../pages/character/character-info';
 import CharacterCreate from '../pages/character/character-create';
 import NoMatch from '../pages/404'
-import Home from "../pages/home";
+import Home from '../pages/home';
 
 const routes = [
     {
