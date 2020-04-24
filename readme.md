@@ -78,3 +78,11 @@ docker-compose pull
 docker-compose build --no-cache
 docker-compose up -d --force-recreate
  ```
+
+## Laravel commands
+
+```
+docker exec -it heroes_php php artisan make:migration create_users_table --create=users
+docker exec -it heroes_php php artisan make:migration add_votes_to_users_table --table=users
+docker exec -it heroes_php php artisan migrate
+```
