@@ -5,6 +5,7 @@ import CharacterInfo from '../pages/character/character-info';
 import CharacterCreate from '../pages/character/character-create';
 import NoMatch from '../pages/404'
 import Home from '../pages/home';
+import Inventory from '../pages/inventory/inventory';
 
 const routes = [
     {
@@ -12,6 +13,11 @@ const routes = [
         exact: true,
         auth: true,
         component: Home
+    }, {
+        path: '/inventory',
+        exact: true,
+        auth: true,
+        component: Inventory
     }, {
         path: '/character',
         exact: true,

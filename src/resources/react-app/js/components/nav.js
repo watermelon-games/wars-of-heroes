@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
-import {localization} from "../helpers/i18n";
+import {localization} from '../helpers/i18n';
 
 const opened = {display: 'none'};
 const closed = {display: 'block'};
@@ -38,7 +38,7 @@ class Navigation extends React.Component {
                 <h5 className="my-0 mr-md-auto font-weight-normal">War of Heroes</h5>
                 <nav className="my-2 my-md-0 mr-md-3">
                     <Link className="p-2 text-dark" to="/character">{localization('character')}</Link>
-                    <a className="p-2 text-dark" href="#">{localization('inventory')}</a>
+                    <Link className="p-2 text-dark" to="/inventory">{localization('inventory')}</Link>
                     <a className="p-2 text-dark" href="#">{localization('location')}</a>
                     <a className="p-2 text-dark" href="#">{localization('settings')}</a>
                 </nav>

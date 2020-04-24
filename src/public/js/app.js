@@ -38235,9 +38235,9 @@ var Navigation = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         className: "p-2 text-dark",
         to: "/character"
-      }, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_3__["localization"])('character')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      }, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_3__["localization"])('character')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         className: "p-2 text-dark",
-        href: "#"
+        to: "/inventory"
       }, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_3__["localization"])('inventory')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         className: "p-2 text-dark",
         href: "#"
@@ -39078,7 +39078,12 @@ var CharacterInfo = /*#__PURE__*/function (_React$Component) {
       isUpdated: false
     };
 
-    _this.props.dispatch(Object(_services_character_service__WEBPACK_IMPORTED_MODULE_2__["profile"])());
+    if (!_this.props.character) {
+      _this.props.dispatch(Object(_services_character_service__WEBPACK_IMPORTED_MODULE_2__["profile"])());
+    } else {
+      _this.state.character = _this.props.character;
+      _this.state.user = _this.props.user;
+    }
 
     _this.handleIncrement = _this.handleIncrement.bind(_assertThisInitialized(_this));
     _this.handleDecrement = _this.handleDecrement.bind(_assertThisInitialized(_this));
@@ -39455,6 +39460,241 @@ var mapStateToProps = function mapStateToProps(state) {
 
 /***/ }),
 
+/***/ "./resources/react-app/js/pages/inventory/inventory.js":
+/*!*************************************************************!*\
+  !*** ./resources/react-app/js/pages/inventory/inventory.js ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _services_character_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/character-service */ "./resources/react-app/js/services/character-service.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _helpers_i18n__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../helpers/i18n */ "./resources/react-app/js/helpers/i18n.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { return function () { var Super = _getPrototypeOf(Derived), result; if (_isNativeReflectConstruct()) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+
+
+
+var Inventory = /*#__PURE__*/function (_React$Component) {
+  _inherits(Inventory, _React$Component);
+
+  var _super = _createSuper(Inventory);
+
+  function Inventory(props) {
+    var _this;
+
+    _classCallCheck(this, Inventory);
+
+    _this = _super.call(this, props);
+    _this.state = {
+      user: {
+        id: null,
+        name: null,
+        email: null
+      },
+      character: {
+        nickname: null,
+        gender: null,
+        avatar: null,
+        money: null,
+        level: null,
+        available_stats: null,
+        experience: null,
+        next_level: null,
+        wins: null,
+        lost: null,
+        npc_victories: null,
+        npc_losses: null,
+        fatigue: null,
+        points_per_hit: null,
+        stats: {
+          strength: null,
+          dexterity: null,
+          luck: null,
+          health: null,
+          knowledge: null,
+          wisdom: null,
+          theft: null,
+          trade: null,
+          artisan: null,
+          fishing: null,
+          hunting: null
+        }
+      },
+      available: 0,
+      isUpdated: false
+    };
+
+    if (!_this.props.character) {
+      _this.props.dispatch(Object(_services_character_service__WEBPACK_IMPORTED_MODULE_2__["profile"])());
+    } else {
+      _this.state.character = _this.props.character;
+      _this.state.user = _this.props.user;
+    } // this.handleIncrement = this.handleIncrement.bind(this);
+
+
+    return _this;
+  }
+
+  _createClass(Inventory, [{
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      if (prevProps !== this.props) {
+        this.setState({
+          character: this.props.character,
+          user: this.props.user
+        });
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var character = this.state.character;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "text-center"
+      }, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('your inventory'))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-6"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "progress mx-5 my-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "progress-bar bg-danger",
+        role: "progressbar",
+        style: {
+          width: '100%'
+        },
+        "aria-valuenow": "100",
+        "aria-valuemin": "0",
+        "aria-valuemax": "100"
+      }, "50 / 50")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "progress mx-5 my-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "progress-bar bg-warning",
+        role: "progressbar",
+        style: {
+          width: '60%'
+        },
+        "aria-valuenow": "60",
+        "aria-valuemin": "0",
+        "aria-valuemax": "100"
+      }, "25 / 40")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row  justify-content-md-center character"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col col-lg-2"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "item-left"
+      }, "Helmet"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "item-left"
+      }, "Shield"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "item-left"
+      }, "Shoes")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-auto"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "character-image"
+      }, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('character'))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col col-lg-2"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "item-right"
+      }, "Weapon"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "item-right"
+      }, "Gloves"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "item-right"
+      }, "Jewelery"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+        className: "table"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("caption", {
+        className: "caption-top"
+      }, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('statistics')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "row"
+      }, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('reputation')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "0")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "row"
+      }, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('money')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "0")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "row"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "http://localhost/character/76f7a9a3-da9b-4e34-96a4-6e4b6fa1a1b1/battle"
+      }, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('battles won'))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "0")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "row"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "http://localhost/character/76f7a9a3-da9b-4e34-96a4-6e4b6fa1a1b1/battle"
+      }, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('battles lost'))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "0"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-6"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+        className: "table"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("caption", {
+        className: "caption-top"
+      }, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('general')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "row"
+      }, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('name')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, character.nickname)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "row"
+      }, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('level')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, character.level)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "row"
+      }, "XP"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Experience, {
+        character: character
+      })))))));
+    }
+  }]);
+
+  return Inventory;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+var Experience = function Experience(props) {
+  var character = props.character;
+  var percentage = character.experience * 100 / character.next_level;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "progress"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "progress-bar",
+    role: "progressbar",
+    style: {
+      width: percentage + '%'
+    },
+    "aria-valuenow": percentage,
+    "aria-valuemin": percentage,
+    "aria-valuemax": "100"
+  }, character.experience, " / ", character.next_level));
+};
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    user: state.Auth.user,
+    character: state.Character.character
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps)(Inventory));
+
+/***/ }),
+
 /***/ "./resources/react-app/js/pages/logout.js":
 /*!************************************************!*\
   !*** ./resources/react-app/js/pages/logout.js ***!
@@ -39687,6 +39927,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages_character_character_create__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../pages/character/character-create */ "./resources/react-app/js/pages/character/character-create.js");
 /* harmony import */ var _pages_404__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../pages/404 */ "./resources/react-app/js/pages/404.js");
 /* harmony import */ var _pages_home__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../pages/home */ "./resources/react-app/js/pages/home.js");
+/* harmony import */ var _pages_inventory_inventory__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../pages/inventory/inventory */ "./resources/react-app/js/pages/inventory/inventory.js");
+
 
 
 
@@ -39699,6 +39941,11 @@ var routes = [{
   exact: true,
   auth: true,
   component: _pages_home__WEBPACK_IMPORTED_MODULE_6__["default"]
+}, {
+  path: '/inventory',
+  exact: true,
+  auth: true,
+  component: _pages_inventory_inventory__WEBPACK_IMPORTED_MODULE_7__["default"]
 }, {
   path: '/character',
   exact: true,
@@ -40340,10 +40587,10 @@ module.exports = JSON.parse("{\"module\":\"commonjs\",\"target\":\"es5\"}");
 /*!************************************************************!*\
   !*** ./resources/react-app/js/translations/ru/static.json ***!
   \************************************************************/
-/*! exports provided: your character, statistics, character, name, level, general, reputation, money, battles won, battles lost, stats, strength, dexterity, luck, health, knowledge, wisdom, ability, theft, trade, artisan, fishing, hunting, inventory, location, settings, default */
+/*! exports provided: your character, your inventory, statistics, character, name, level, general, reputation, money, battles won, battles lost, stats, strength, dexterity, luck, health, knowledge, wisdom, ability, theft, trade, artisan, fishing, hunting, inventory, location, settings, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"your character\":\"Ваш персонаж\",\"statistics\":\"Статистика\",\"character\":\"Персонаж\",\"name\":\"Имя\",\"level\":\"Уровень\",\"general\":\"Основное\",\"reputation\":\"Репутация\",\"money\":\"Деньги\",\"battles won\":\"Выиграно битв\",\"battles lost\":\"Проиграно битв\",\"stats\":\"Статы\",\"strength\":\"Сила\",\"dexterity\":\"Ловкость\",\"luck\":\"Удача\",\"health\":\"Здоровье\",\"knowledge\":\"Знания\",\"wisdom\":\"Мудрость\",\"ability\":\"Умения\",\"theft\":\"Воровство\",\"trade\":\"Торговля\",\"artisan\":\"Ремесленничество\",\"fishing\":\"Рыбаловство\",\"hunting\":\"Охота\",\"inventory\":\"Инвентарь\",\"location\":\"Метность\",\"settings\":\"Настройки\"}");
+module.exports = JSON.parse("{\"your character\":\"Ваш персонаж\",\"your inventory\":\"Ваш инвентарь\",\"statistics\":\"Статистика\",\"character\":\"Персонаж\",\"name\":\"Имя\",\"level\":\"Уровень\",\"general\":\"Основное\",\"reputation\":\"Репутация\",\"money\":\"Деньги\",\"battles won\":\"Выиграно битв\",\"battles lost\":\"Проиграно битв\",\"stats\":\"Статы\",\"strength\":\"Сила\",\"dexterity\":\"Ловкость\",\"luck\":\"Удача\",\"health\":\"Здоровье\",\"knowledge\":\"Знания\",\"wisdom\":\"Мудрость\",\"ability\":\"Умения\",\"theft\":\"Воровство\",\"trade\":\"Торговля\",\"artisan\":\"Ремесленничество\",\"fishing\":\"Рыбаловство\",\"hunting\":\"Охота\",\"inventory\":\"Инвентарь\",\"location\":\"Метность\",\"settings\":\"Настройки\"}");
 
 /***/ }),
 

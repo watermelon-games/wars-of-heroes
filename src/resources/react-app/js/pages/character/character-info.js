@@ -46,7 +46,12 @@ class CharacterInfo extends React.Component {
             isUpdated: false,
         };
 
-        this.props.dispatch(profile())
+        if (!this.props.character) {
+            this.props.dispatch(profile())
+        } else {
+            this.state.character = this.props.character;
+            this.state.user = this.props.user;
+        }
 
         this.handleIncrement = this.handleIncrement.bind(this);
         this.handleDecrement = this.handleDecrement.bind(this);
