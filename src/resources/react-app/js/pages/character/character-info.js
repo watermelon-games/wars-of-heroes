@@ -40,13 +40,14 @@ class CharacterInfo extends React.Component {
                     artisan: null,
                     fishing: null,
                     hunting: null,
-                }
+                },
+                inventory: []
             },
             available: 0,
             isUpdated: false,
         };
 
-        if (!this.props.character) {
+        if (!this.props.character.id) {
             this.props.dispatch(profile())
         } else {
             this.state.character = this.props.character;

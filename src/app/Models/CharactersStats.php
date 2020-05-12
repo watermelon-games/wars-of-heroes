@@ -26,6 +26,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class CharactersStats extends Model
 {
+    protected $table = 'characters_stats';
+
     /**
      * @var array
      */

@@ -16,6 +16,23 @@ const stats = {
     wisdom: 0,
 };
 
+const inventory = [{
+    id: 0,
+    character_id: 0,
+    item_id: 0,
+    is_equipped_item: false,
+    description: {
+        id: 0,
+        name: null,
+        description: null,
+        type: null,
+        effects: {},
+        price: 0,
+        available: 0,
+        image: null,
+    }
+}];
+
 const character = {
     id: 0,
     avatar: null,
@@ -33,6 +50,7 @@ const character = {
     npc_victories: 0,
     points_per_hit: 0,
     stats: stats,
+    inventory: inventory,
 };
 
 const initialState = {
@@ -47,6 +65,8 @@ const Character = (state = initialState, {type, payload = null}) => {
             return characterProfile(state, payload);
         case ActionTypes.USER_PROFILE:
             return characterProfile(state, payload);
+        case ActionTypes.AUTH_LOGOUT:
+            return dropData(state);
         default:
             return state;
     }
@@ -55,6 +75,14 @@ const Character = (state = initialState, {type, payload = null}) => {
 const characterProfile = (state, payload) => {
     const character = payload.character;
 
+    state = Object.assign({}, state, {
+        character
+    });
+
+    return state;
+};
+
+const dropData = (state) => {
     state = Object.assign({}, state, {
         character
     });

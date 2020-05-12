@@ -38180,12 +38180,6 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
-var opened = {
-  display: 'none'
-};
-var closed = {
-  display: 'block'
-};
 
 var Navigation = /*#__PURE__*/function (_React$Component) {
   _inherits(Navigation, _React$Component);
@@ -38247,7 +38241,7 @@ var Navigation = /*#__PURE__*/function (_React$Component) {
       }, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_3__["localization"])('settings'))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         className: "btn btn-outline-primary",
         to: "/logout"
-      }, "Exit"));
+      }, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_3__["localization"])('exit')));
     }
   }]);
 
@@ -38553,13 +38547,12 @@ var Login = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _ref2 = this.props.location.state || {
+      var _from = {
         from: {
           pathname: '/character'
         }
       },
-          from = _ref2.from;
-
+          from = _from.from;
       var isAuthenticated = this.props.isAuthenticated;
 
       if (isAuthenticated) {
@@ -38572,7 +38565,7 @@ var Login = /*#__PURE__*/function (_React$Component) {
         className: "sidenav"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "login-main-text"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('wars of heroes'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), " ", Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('login page')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('login or register from here to access')))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('wars of heroes')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('login page')))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-md-6 col-sm-12"
@@ -38738,7 +38731,7 @@ var Register = /*#__PURE__*/function (_React$Component) {
         className: "sidenav"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "login-main-text"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('wars of heroes'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), " ", Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('register page')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('login or register from here to access')))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('wars of heroes')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('register page')))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-md-6 col-sm-12"
@@ -39072,13 +39065,14 @@ var CharacterInfo = /*#__PURE__*/function (_React$Component) {
           artisan: null,
           fishing: null,
           hunting: null
-        }
+        },
+        inventory: []
       },
       available: 0,
       isUpdated: false
     };
 
-    if (!_this.props.character) {
+    if (!_this.props.character.id) {
       _this.props.dispatch(Object(_services_character_service__WEBPACK_IMPORTED_MODULE_2__["profile"])());
     } else {
       _this.state.character = _this.props.character;
@@ -39473,8 +39467,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _services_character_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/character-service */ "./resources/react-app/js/services/character-service.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _helpers_i18n__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../helpers/i18n */ "./resources/react-app/js/helpers/i18n.js");
+/* harmony import */ var _helpers_i18n__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../helpers/i18n */ "./resources/react-app/js/helpers/i18n.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -39496,7 +39489,6 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
 
 
 
@@ -39547,7 +39539,8 @@ var Inventory = /*#__PURE__*/function (_React$Component) {
           artisan: null,
           fishing: null,
           hunting: null
-        }
+        },
+        items: []
       },
       available: 0,
       isUpdated: false
@@ -39584,7 +39577,7 @@ var Inventory = /*#__PURE__*/function (_React$Component) {
         className: "col-md-12"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: "text-center"
-      }, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('your inventory'))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_3__["localization"])('your inventory'))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-md-6"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "progress mx-5 my-3"
@@ -39622,7 +39615,7 @@ var Inventory = /*#__PURE__*/function (_React$Component) {
         className: "col-md-auto"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "character-image"
-      }, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('character'))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_3__["localization"])('character'))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col col-lg-2"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "item-right"
@@ -39634,29 +39627,29 @@ var Inventory = /*#__PURE__*/function (_React$Component) {
         className: "table"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("caption", {
         className: "caption-top"
-      }, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('statistics')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+      }, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_3__["localization"])('statistics')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "row"
-      }, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('reputation')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "0")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+      }, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_3__["localization"])('reputation')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "0")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "row"
-      }, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('money')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "0")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        scope: "row"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "http://localhost/character/76f7a9a3-da9b-4e34-96a4-6e4b6fa1a1b1/battle"
-      }, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('battles won'))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "0")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+      }, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_3__["localization"])('money')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "0")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "row"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "http://localhost/character/76f7a9a3-da9b-4e34-96a4-6e4b6fa1a1b1/battle"
-      }, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('battles lost'))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "0"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_3__["localization"])('battles won'))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "0")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "row"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "http://localhost/character/76f7a9a3-da9b-4e34-96a4-6e4b6fa1a1b1/battle"
+      }, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_3__["localization"])('battles lost'))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "0"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-md-6"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
         className: "table"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("caption", {
         className: "caption-top"
-      }, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('general')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+      }, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_3__["localization"])('general')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "row"
-      }, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('name')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, character.nickname)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+      }, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_3__["localization"])('name')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, character.nickname)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "row"
-      }, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_4__["localization"])('level')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, character.level)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+      }, Object(_helpers_i18n__WEBPACK_IMPORTED_MODULE_3__["localization"])('level')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, character.level)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "row"
       }, "XP"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Experience, {
         character: character
@@ -40443,6 +40436,22 @@ var stats = {
   trade: 0,
   wisdom: 0
 };
+var inventory = [{
+  id: 0,
+  character_id: 0,
+  item_id: 0,
+  is_equipped_item: false,
+  description: {
+    id: 0,
+    name: null,
+    description: null,
+    type: null,
+    effects: {},
+    price: 0,
+    available: 0,
+    image: null
+  }
+}];
 var character = {
   id: 0,
   avatar: null,
@@ -40459,7 +40468,8 @@ var character = {
   npc_losses: 0,
   npc_victories: 0,
   points_per_hit: 0,
-  stats: stats
+  stats: stats,
+  inventory: inventory
 };
 var initialState = {
   character: character
@@ -40483,6 +40493,9 @@ var Character = function Character() {
     case _action_types__WEBPACK_IMPORTED_MODULE_0__["USER_PROFILE"]:
       return characterProfile(state, payload);
 
+    case _action_types__WEBPACK_IMPORTED_MODULE_0__["AUTH_LOGOUT"]:
+      return dropData(state);
+
     default:
       return state;
   }
@@ -40490,6 +40503,13 @@ var Character = function Character() {
 
 var characterProfile = function characterProfile(state, payload) {
   var character = payload.character;
+  state = Object.assign({}, state, {
+    character: character
+  });
+  return state;
+};
+
+var dropData = function dropData(state) {
   state = Object.assign({}, state, {
     character: character
   });
@@ -40587,10 +40607,10 @@ module.exports = JSON.parse("{\"module\":\"commonjs\",\"target\":\"es5\"}");
 /*!************************************************************!*\
   !*** ./resources/react-app/js/translations/ru/static.json ***!
   \************************************************************/
-/*! exports provided: your character, your inventory, statistics, character, name, level, general, reputation, money, battles won, battles lost, stats, strength, dexterity, luck, health, knowledge, wisdom, ability, theft, trade, artisan, fishing, hunting, inventory, location, settings, default */
+/*! exports provided: your character, your inventory, statistics, character, name, level, general, reputation, money, battles won, battles lost, stats, strength, dexterity, luck, health, knowledge, wisdom, ability, theft, trade, artisan, fishing, hunting, inventory, location, settings, exit, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"your character\":\"Ваш персонаж\",\"your inventory\":\"Ваш инвентарь\",\"statistics\":\"Статистика\",\"character\":\"Персонаж\",\"name\":\"Имя\",\"level\":\"Уровень\",\"general\":\"Основное\",\"reputation\":\"Репутация\",\"money\":\"Деньги\",\"battles won\":\"Выиграно битв\",\"battles lost\":\"Проиграно битв\",\"stats\":\"Статы\",\"strength\":\"Сила\",\"dexterity\":\"Ловкость\",\"luck\":\"Удача\",\"health\":\"Здоровье\",\"knowledge\":\"Знания\",\"wisdom\":\"Мудрость\",\"ability\":\"Умения\",\"theft\":\"Воровство\",\"trade\":\"Торговля\",\"artisan\":\"Ремесленничество\",\"fishing\":\"Рыбаловство\",\"hunting\":\"Охота\",\"inventory\":\"Инвентарь\",\"location\":\"Метность\",\"settings\":\"Настройки\"}");
+module.exports = JSON.parse("{\"your character\":\"Ваш персонаж\",\"your inventory\":\"Ваш инвентарь\",\"statistics\":\"Статистика\",\"character\":\"Персонаж\",\"name\":\"Имя\",\"level\":\"Уровень\",\"general\":\"Основное\",\"reputation\":\"Репутация\",\"money\":\"Деньги\",\"battles won\":\"Выиграно битв\",\"battles lost\":\"Проиграно битв\",\"stats\":\"Статы\",\"strength\":\"Сила\",\"dexterity\":\"Ловкость\",\"luck\":\"Удача\",\"health\":\"Здоровье\",\"knowledge\":\"Знания\",\"wisdom\":\"Мудрость\",\"ability\":\"Умения\",\"theft\":\"Воровство\",\"trade\":\"Торговля\",\"artisan\":\"Ремесленничество\",\"fishing\":\"Рыбаловство\",\"hunting\":\"Охота\",\"inventory\":\"Инвентарь\",\"location\":\"Метность\",\"settings\":\"Настройки\",\"exit\":\"Выход\"}");
 
 /***/ }),
 

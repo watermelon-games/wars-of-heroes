@@ -31,9 +31,12 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $updated_at
  *
  * @property CharactersStats $stats
+ * @property CharactersInventory $inventory
  */
 class Characters extends Model
 {
+    protected $table = 'characters';
+
     /**
      * @var array
      */
@@ -62,5 +65,10 @@ class Characters extends Model
     public function stats()
     {
         return $this->hasOne('App\Models\CharactersStats', 'character_id');
+    }
+
+    public function inventory()
+    {
+        return $this->hasMany('App\Models\CharactersInventory', 'character_id');
     }
 }

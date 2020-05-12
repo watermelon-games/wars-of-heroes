@@ -25,5 +25,6 @@
     "hunting": "Охота",
     "inventory": "Инвентарь",
     "location": "Метность",
-    "settings": "Настройки"
+    "settings": "Настройки",
+    "exit": "Выход"
 }

@@ -11,7 +11,7 @@ class CharactersRepository
 
     public function findByUser(int $userId): ?Characters
     {
-        return $this->model::where('user_id', $userId)->with('stats')->first();
+        return $this->model::where('user_id', $userId)->with('stats', 'inventory', 'inventory.description')->first();
     }
 
     public function find(int $id): ?Characters

@@ -60,8 +60,8 @@ class Register extends React.Component {
             <div>
                 <div className="sidenav">
                     <div className="login-main-text">
-                        <h2>{localization('wars of heroes')}<br/> {localization('register page')}</h2>
-                        <p>{localization('login or register from here to access')}</p>
+                        <h2>{localization('wars of heroes')}</h2>
+                        <p>{localization('register page')}</p>
                     </div>
                 </div>
                 <div className="main">

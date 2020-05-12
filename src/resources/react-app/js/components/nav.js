@@ -3,9 +3,6 @@ import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {localization} from '../helpers/i18n';
 
-const opened = {display: 'none'};
-const closed = {display: 'block'};
-
 class Navigation extends React.Component {
     constructor(props) {
         super(props);
@@ -42,7 +39,7 @@ class Navigation extends React.Component {
                     <a className="p-2 text-dark" href="#">{localization('location')}</a>
                     <a className="p-2 text-dark" href="#">{localization('settings')}</a>
                 </nav>
-                <Link className="btn btn-outline-primary" to="/logout">Exit</Link>
+                <Link className="btn btn-outline-primary" to="/logout">{localization('exit')}</Link>
             </div>
         );
     }

@@ -1,7 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux'
-import {profile, updateCharacterStats} from '../../services/character-service';
-import {Redirect} from 'react-router-dom';
+import {profile} from '../../services/character-service';
 import {localization} from '../../helpers/i18n';
 
 class Inventory extends React.Component {
@@ -40,7 +39,8 @@ class Inventory extends React.Component {
                     artisan: null,
                     fishing: null,
                     hunting: null,
-                }
+                },
+                items: []
             },
             available: 0,
             isUpdated: false,

@@ -46,7 +46,7 @@ class Login extends React.Component {
     }
 
     render() {
-        const {from} = this.props.location.state || {from: {pathname: '/character'}};
+        const {from} = {from: {pathname: '/character'}};
         const {isAuthenticated} = this.props;
 
         if (isAuthenticated) {
@@ -59,8 +59,8 @@ class Login extends React.Component {
             <div>
                 <div className="sidenav">
                     <div className="login-main-text">
-                        <h2>{localization('wars of heroes')}<br/> {localization('login page')}</h2>
-                        <p>{localization('login or register from here to access')}</p>
+                        <h2>{localization('wars of heroes')}</h2>
+                        <p>{localization('login page')}</p>
                     </div>
                 </div>
                 <div className="main">
