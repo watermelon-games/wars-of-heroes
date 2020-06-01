@@ -5,7 +5,16 @@ namespace App\Http\Controllers\Api\Auth;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\UserResource;
-
+/**
+ * @property int $id
+ *
+ * @property string $name
+ * @property string $email
+ * @property string $password
+ *
+ * @property string $created_at
+ * @property string $updated_at
+ */
 class LoginController extends Controller
 {
     public function __invoke(LoginRequest $request)
