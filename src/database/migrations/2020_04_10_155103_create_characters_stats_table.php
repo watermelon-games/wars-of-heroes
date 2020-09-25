@@ -21,15 +21,9 @@ class CreateCharactersStatsTable extends Migration
             $table->integer('strength')->default(1);
             $table->integer('dexterity')->default(1);
             $table->integer('luck')->default(1);
+            $table->integer('wisdom')->default(1);
             $table->integer('health')->default(1);
             $table->integer('knowledge')->default(1);
-            $table->integer('wisdom')->default(1);
-
-            $table->integer('theft')->default(0);
-            $table->integer('trade')->default(0);
-            $table->integer('artisan')->default(0);
-            $table->integer('fishing')->default(0);
-            $table->integer('hunting')->default(0);
 
             $table->timestamps();
 

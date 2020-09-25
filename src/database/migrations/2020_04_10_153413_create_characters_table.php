@@ -23,7 +23,12 @@ class CreateCharactersTable extends Migration
             $table->string('avatar')->nullable();
             $table->string('character')->nullable();
 
+            $table->string('class')->nullable();
+            $table->string('rise')->nullable();
+
+            $table->integer('level')->default(1);
             $table->decimal('money', 10, 6)->default(0.0);
+            $table->integer('available_stats')->default(15);
 
             $table->integer('experience')->default(0);
             $table->integer('next_level')->default(100);

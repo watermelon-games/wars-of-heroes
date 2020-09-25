@@ -18,11 +18,14 @@ class CreateCharactersSkillsTable extends Migration
 
             $table->integer('character_id');
 
-            $table->boolean('more_power')->default(false);
-            $table->boolean('more_agility')->default(false);
-            $table->boolean('more_luck')->default(false);
-            $table->boolean('more_knowledge')->default(false);
-            $table->boolean('more_health')->default(false);
+            $table->integer('power_shot')->default(false);
+            $table->integer('backstage')->default(false);
+
+            $table->integer('fire_ball')->default(false);
+            $table->integer('heal')->default(false);
+
+            $table->integer('shield_bash')->default(false);
+            $table->integer('power_attack')->default(false);
 
             $table->timestamps();
 

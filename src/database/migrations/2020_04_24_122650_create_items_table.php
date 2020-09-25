@@ -18,10 +18,16 @@ class CreateItemsTable extends Migration
 
             $table->string('name');
             $table->string('description');
-            $table->enum('type', ['helmet', 'armor', 'shoes', 'weapon', 'gloves', 'jewelery']);
+            $table->enum('type', ['helmet', 'armor', 'shoes', 'weapon', 'shield', 'gloves', 'ring', 'jewelery']);
             $table->json('effects');
+
+            $table->integer('health')->default(0);
+            $table->integer('attack')->default(0);
+            $table->integer('defence')->default(0);
+            $table->integer('magic')->default(0);
+
             $table->integer('price')->default(0);
-            $table->integer('available')->default(0);
+            $table->boolean('available')->default(false);
             $table->string('image')->nullable();
 
             $table->timestamps();

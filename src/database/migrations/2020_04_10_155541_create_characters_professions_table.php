@@ -18,7 +18,6 @@ class CreateCharactersProfessionsTable extends Migration
 
             $table->integer('character_id');
 
-            $table->boolean('theft')->default(false);
             $table->boolean('trade')->default(false);
             $table->boolean('artisan')->default(false);
             $table->boolean('fishing')->default(false);
